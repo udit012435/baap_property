@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Property Baap – The BAAP of All Property Deals</title>
+    <link rel="stylesheet" href="style.css" />
+
+
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Rajdhani:wght@400;500;600;700&family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar" id="navbar">
+
+    <!-- Top Row -->
+    <div class="navbar-top">
+      <div class="nav-top-container">
+
+        <a href="#" class="nav-logo">
+          <div class="logo-wrapper">
+            <img src="assets/logo.png" alt="Property Baap Logo" class="logo-img" id="logoImg" onerror="this.style.display='none'; document.getElementById('logoFallback').style.display='flex'"/>
+            <div class="logo-fallback" id="logoFallback">
+              <span class="logo-crown">♛</span>
+              <span class="logo-text-brand">B</span>
+            </div>
+          </div>
+        </a>
+
+        <div class="nav-center">
+          <span class="navbar-tagline">Property Deals Starts Here</span>
+          <div class="nav-links-row">
+            <a href="https://www.110024.com" target="_blank" rel="noopener noreferrer" class="nav-top-link">
+              GLOBAL SEARCH
+              <small>110024.com, etc.</small>
+            </a>
+            <a href="https://www.titlewala.com" target="_blank" rel="noopener noreferrer" class="nav-top-link">
+              LEGAL &amp; TITLE
+              <small>TitleWala, SaleDeed, NOC</small>
+            </a>
+            <a href="https://www.binadlal.com" target="_blank" rel="noopener noreferrer" class="nav-top-link">
+              DIRECT TRANSACTIONS
+              <small>Bina Dalal Approved</small>
+            </a>
+            <a href="https://wa.me/918800505050" target="_blank" rel="noopener noreferrer" class="nav-top-link">
+              CONSULT THE BAAP
+            </a>
+          </div>
+        </div>
+
+        <div class="nav-row-1-right">
+          <div class="lang-switcher" id="langSwitcher">
+            <button class="lang-btn" id="langBtn" aria-label="Change Language">
+              <i class="fa-solid fa-globe"></i>
+              <span id="langLabel">EN</span>
+              <i class="fa-solid fa-chevron-down lang-chevron"></i>
+            </button>
+            <div class="lang-dropdown" id="langDropdown">
+              <div class="lang-search-wrap">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="langSearch" class="lang-search" placeholder="Search language…" autocomplete="off"/>
+              </div>
+              <ul class="lang-list" id="langList"></ul>
+            </div>
+          </div>
+          <a href="https://wa.me/918800505050" target="_blank" rel="noopener noreferrer" class="btn-consultation" id="consultBtn">BOOK CONSULTATION</a>
+          <button class="hamburger" id="hamburger" aria-label="Toggle Menu">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-inner">
+      <div class="mobile-nav-section">
+        <div class="mobile-nav-title" data-target="mob1">GLOBAL SEARCH <span class="m-arrow">+</span></div>
+        <div class="mobile-nav-sub" id="mob1">
+          <a href="https://www.110024.com" target="_blank" rel="noopener noreferrer">110024.com (Lajpat Nagar)</a>
+          <a href="https://www.110021.com" target="_blank" rel="noopener noreferrer">110021.com (Chanakyapuri)</a>
+          <a href="https://www.110048.com" target="_blank" rel="noopener noreferrer">110048.com (GK)</a>
+          <a href="https://www.110049.com" target="_blank" rel="noopener noreferrer">110049.com (AIIMS)</a>
+        </div>
+      </div>
+      <div class="mobile-nav-section">
+        <div class="mobile-nav-title" data-target="mob2">LEGAL &amp; TITLE <span class="m-arrow">+</span></div>
+        <div class="mobile-nav-sub" id="mob2">
+          <a href="https://www.titlewala.com" target="_blank" rel="noopener noreferrer">TitleWala.com</a>
+          <a href="https://www.saledeed.com" target="_blank" rel="noopener noreferrer">SaleDeed.com</a>
+          <a href="https://www.mutationwala.com" target="_blank" rel="noopener noreferrer">MutationWala.com</a>
+          <a href="https://www.noobjectioncertificate.com" target="_blank" rel="noopener noreferrer">NOC.com</a>
+        </div>
+      </div>
+      <div class="mobile-nav-section">
+        <div class="mobile-nav-title" data-target="mob3">DIRECT TRANSACTIONS <span class="m-arrow">+</span></div>
+        <div class="mobile-nav-sub" id="mob3">
+          <a href="https://www.binadlal.com" target="_blank" rel="noopener noreferrer">Bina Dalal Certified</a>
+          <a href="https://www.binadlal.com/owner-direct" target="_blank" rel="noopener noreferrer">Property Owner Direct</a>
+          <a href="https://www.binadlal.com/builder-direct" target="_blank" rel="noopener noreferrer">Builder Direct</a>
+        </div>
+      </div>
+      <div class="mobile-nav-section">
+        <div class="mobile-nav-title" data-target="mob4">CONSULT THE BAAP <span class="m-arrow">+</span></div>
+        <div class="mobile-nav-sub" id="mob4">
+          <a href="https://maps.google.com/?q=Lajpat+Nagar+New+Delhi" target="_blank" rel="noopener noreferrer">H.Q. Address</a>
+          <a href="https://wa.me/918800505050" target="_blank" rel="noopener noreferrer">WhatsApp Support</a>
+          <a href="https://www.titlewala.com/consult" target="_blank" rel="noopener noreferrer">Consult an Expert</a>
+        </div>
+      </div>
+      <a href="https://wa.me/918800505050" target="_blank" rel="noopener noreferrer" class="btn-consultation mobile-cta">BOOK CONSULTATION</a>
+    </div>
+  </div>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="home">
+    <div class="hero-slider" id="heroSlider">
+      <div class="hero-slide active" style="background-image: url('assets/hero-1.jpg')"></div>
+      <div class="hero-slide" style="background-image: url('assets/hero-2.jpg')"></div>
+      <div class="hero-slide" style="background-image: url('assets/hero-3.jpg')"></div>
+      <div class="hero-slide" style="background-image: url('assets/hero-4.jpg')"></div>
+      <div class="hero-slide" style="background-image: url('assets/hero-5.jpg')"></div>
+      <div class="hero-slide" style="background-image: url('assets/hero-6.jpg')"></div>
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-particles" id="particles"></div>
+    <div class="hero-content">
+      <!-- <p class="hero-tagline" data-animate>Property Deal Starts Here</p> -->
+      <h1 class="hero-title" data-animate>
+        THE <span class="gold-text">BAAP</span><br class="mobile-break"> OF ALL PROPERTY DEALS
+      </h1>
+      <p class="hero-sub" data-animate>A Parent Brand Unifying Ultimate Real Estate Service Ecosystem.</p>
+      <a href="#services" class="btn-explore" data-animate>EXPLORE OUR SERVICES</a>
+    </div>
+
+    <!-- Hero Service Swiper -->
+    <div class="hero-swiper-wrap">
+      <div class="swiper hero-swiper">
+        <div class="swiper-wrapper">
+
+          <div class="swiper-slide"><a href="https://www.titlewala.com" target="_blank" rel="noopener noreferrer" class="hero-scard"><i class="fa-solid fa-shield-halved"></i><span>Property Verification</span></a></div>
+          <div class="swiper-slide"><a href="https://www.titlewala.com" target="_blank" rel="noopener noreferrer" class="hero-scard"><i class="fa-solid fa-magnifying-glass"></i><span>Property Title Check</span></a></div>
+          <div class="swiper-slide"><a href="https://www.mutationwala.com" target="_blank" rel="noopener noreferrer" class="hero-scard"><i class="fa-solid fa-right-left"></i><span>Property Mutation</span></a></div>
+          <div class="swiper-slide"><a href="https://www.saledeed.com" target="_blank" rel="noopener noreferrer" class="hero-scard"><i class="fa-solid fa-file-pen"></i><span>Property Customized Deeds</span></a></div>
+          <div class="swiper-slide"><a href="https://www.saledeed.com" target="_blank" rel="noopener noreferrer" class="hero-scard"><i class="fa-solid fa-file-signature"></i><span>Property Deed Registration</span></a></div>
+          <div class="swiper-slide"><a href="https://www.valuationwala.com" target="_blank" rel="noopener noreferrer" class="hero-scard"><i class="fa-solid fa-chart-line"></i><span>Property Valuation</span></a></div>
+          <div class="swiper-slide"><a href="https://www.freeholdwala.com" target="_blank" rel="noopener noreferrer" class="hero-scard"><i class="fa-solid fa-key"></i><span>Property Freehold</span></a></div>
+          <div class="swiper-slide"><a href="https://www.noobjectioncertificate.com" target="_blank" rel="noopener noreferrer" class="hero-scard"><i class="fa-solid fa-certificate"></i><span>Property NOC</span></a></div>
+          <div class="swiper-slide"><a href="https://www.propertyowner.in" target="_blank" rel="noopener noreferrer" class="hero-scard"><i class="fa-solid fa-handshake"></i><span>Direct Owner Deals</span></a></div>
+          <div class="swiper-slide"><a href="https://www.titlewala.com" target="_blank" rel="noopener noreferrer" class="hero-scard"><i class="fa-solid fa-house-circle-check"></i><span>Property Buying Assistance</span></a></div>
+          <div class="swiper-slide"><a href="https://www.saledeed.com" target="_blank" rel="noopener noreferrer" class="hero-scard"><i class="fa-solid fa-house-circle-xmark"></i><span>Property Sale Assistance</span></a></div>
+          <div class="swiper-slide"><a href="https://www.saledeed.com" target="_blank" rel="noopener noreferrer" class="hero-scard"><i class="fa-solid fa-file-contract"></i><span>Property Lease Assistance</span></a></div>
+          <div class="swiper-slide"><a href="https://www.saledeed.com" target="_blank" rel="noopener noreferrer" class="hero-scard"><i class="fa-solid fa-building-columns"></i><span>Real Estate Liaisoning</span></a></div>
+          <div class="swiper-slide"><a href="https://www.saledeed.com" target="_blank" rel="noopener noreferrer" class="hero-scard"><i class="fa-solid fa-landmark"></i><span>Building Authority Assistance</span></a></div>
+          <div class="swiper-slide"><a href="https://www.110024.com" target="_blank" rel="noopener noreferrer" class="hero-scard"><i class="fa-solid fa-map"></i><span>Land Deals</span></a></div>
+          <div class="swiper-slide"><a href="https://www.saledeed.com" target="_blank" rel="noopener noreferrer" class="hero-scard"><i class="fa-solid fa-helmet-safety"></i><span>Property Construction</span></a></div>
+          <div class="swiper-slide"><a href="https://www.saledeed.com" target="_blank" rel="noopener noreferrer" class="hero-scard"><i class="fa-solid fa-paint-roller"></i><span>Property Renovation</span></a></div>
+          <div class="swiper-slide"><a href="https://www.saledeed.com" target="_blank" rel="noopener noreferrer" class="hero-scard"><i class="fa-solid fa-truck-moving"></i><span>Property Relocation</span></a></div>
+          <div class="swiper-slide"><a href="https://www.saledeed.com" target="_blank" rel="noopener noreferrer" class="hero-scard"><i class="fa-solid fa-city"></i><span>All Building Authorities</span></a></div>
+          <div class="swiper-slide"><a href="#" class="hero-scard"><i class="fa-solid fa-gem"></i><span>Dubai's Exclusive Properties</span></a></div>
+          <div class="swiper-slide"><a href="https://www.titlewala.com" target="_blank" rel="noopener noreferrer" class="hero-scard"><i class="fa-solid fa-house"></i><span>Everything Related To Property</span></a></div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-scroll-hint">
+      <span></span>
+      <p>Scroll</p>
+    </div>
+  </section>
+
+  <!-- ===== FEATURES STRIP ===== -->
+  <section class="features-strip">
+    <div class="features-strip-container">
+
+      <a href="#services" class="feature-box">
+        <h3 class="feature-title">PROPERTY LAW</h3>
+        <p class="feature-desc">Expert In Title Search, Mutation, Deed Drafting & Registration, Valuation, Freehold, Real Estate Liaisoning.</p>
+      </a>
+
+      <a href="#services" class="feature-box">
+        <h3 class="feature-title">DIRECT DEALS</h3>
+        <p class="feature-desc">Deals By Property Owners, Save Time & Money.</p>
+      </a>
+
+      <a href="#services" class="feature-box">
+        <h3 class="feature-title">EVERYTHING FROM SALE TO DEED</h3>
+        <p class="feature-desc">A One Stop Solution For Your Every Property Need — Indeed!</p>
+      </a>
+
+      <a href="#services" class="feature-box">
+        <h3 class="feature-title">EXCLUSIVE SERVICES IN DELHI</h3>
+        <p class="feature-desc">A First Ever Hyper-Local Platform Offering Specialized Property Deals & Services.</p>
+      </a>
+
+      <a href="#doobai" class="feature-box">
+        <h3 class="feature-title">GO INTERNATIONAL</h3>
+        <p class="feature-desc">Dubai's Office of Builders And Investors (DOOBAI) — Invest In Dubai's Properties At Zero Brokerage With End-To-End Assistance.</p>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ===== SERVICE CARDS ===== -->
+  <section class="services" id="services">
+    <div class="services-grid">
+
+      <div class="service-card">
+        <div class="card-icon-wrap"><i class="fa-solid fa-shield-halved card-fa-icon"></i></div>
+        <h3 class="card-title">PROPERTY VERIFICATION &amp; DUE DILIGENCE<br/><span>(TitleWala.com)</span></h3>
+        <p class="card-desc">Complete title search, ownership verification and property due diligence.</p>
+        <a href="https://www.titlewala.com" target="_blank" rel="noopener noreferrer" class="card-link">Explore →</a>
+      </div>
+
+      <div class="service-card">
+        <div class="card-icon-wrap"><i class="fa-solid fa-right-left card-fa-icon"></i></div>
+        <h3 class="card-title">PROPERTY MUTATION<br/><span>(MutationWala.com)</span></h3>
+        <p class="card-desc">Seamless ownership transfer and mutation with government offices.</p>
+        <a href="https://www.mutationwala.com" target="_blank" rel="noopener noreferrer" class="card-link">Explore →</a>
+      </div>
+
+      <div class="service-card">
+        <div class="card-icon-wrap"><i class="fa-solid fa-chart-line card-fa-icon"></i></div>
+        <h3 class="card-title">PROPERTY VALUATION<br/><span>(ValuationWala.com)</span></h3>
+        <p class="card-desc">Accurate market valuation and stamp duty assessment for all property types.</p>
+        <a href="https://www.valuationwala.com" target="_blank" rel="noopener noreferrer" class="card-link">Explore →</a>
+      </div>
+
+      <div class="service-card">
+        <div class="card-icon-wrap"><i class="fa-solid fa-file-signature card-fa-icon"></i></div>
+        <h3 class="card-title">PROPERTY DEED DRAFTING &amp; REGISTRATION<br/><span>(DeedWala.com)</span></h3>
+        <p class="card-desc">Expert sale deed drafting, vetting and sub-registrar office registration.</p>
+        <a href="https://www.deedwala.com" target="_blank" rel="noopener noreferrer" class="card-link">Explore →</a>
+      </div>
+
+      <div class="service-card featured">
+        <div class="card-icon-wrap"><i class="fa-solid fa-key card-fa-icon"></i></div>
+        <h3 class="card-title">PROPERTY FREEHOLD<br/><span>(FreeholdWala.com)</span></h3>
+        <p class="card-desc">Convert leasehold to freehold with complete DDA &amp; L&amp;DO documentation support.</p>
+        <a href="https://www.freeholdwala.com" target="_blank" rel="noopener noreferrer" class="card-link">Explore →</a>
+      </div>
+
+      <div class="service-card">
+        <div class="card-icon-wrap"><i class="fa-solid fa-certificate card-fa-icon"></i></div>
+        <h3 class="card-title">PROPERTY NOC<br/><span>(NoObjectionCertificate.com)</span></h3>
+        <p class="card-desc">No Objection Certificate procurement for builders, owners and lenders.</p>
+        <a href="https://www.noobjectioncertificate.com" target="_blank" rel="noopener noreferrer" class="card-link">Explore →</a>
+      </div>
+
+      <div class="service-card">
+        <div class="card-icon-wrap"><i class="fa-solid fa-location-dot card-fa-icon"></i></div>
+        <h3 class="card-title">LAJPAT NAGAR &amp; DEFENCE COLONY SPECIALIZED PROPERTY SERVICES<br/><span>(110024.com)</span></h3>
+        <p class="card-desc">Specialised property services in South Delhi's most premium localities.</p>
+        <a href="https://www.110024.com" target="_blank" rel="noopener noreferrer" class="card-link">Explore →</a>
+      </div>
+
+      <div class="service-card">
+        <div class="card-icon-wrap"><i class="fa-solid fa-handshake card-fa-icon"></i></div>
+        <h3 class="card-title">DIRECT DEALS BY VERIFIED PROPERTY OWNERS<br/><span>(PropertyOwner.in)</span></h3>
+        <p class="card-desc">Connect directly with verified property owners — zero brokerage, guaranteed.</p>
+        <a href="https://www.propertyowner.in" target="_blank" rel="noopener noreferrer" class="card-link">Explore →</a>
+      </div>
+
+      <div class="service-card">
+        <div class="card-icon-wrap"><i class="fa-solid fa-building-columns card-fa-icon"></i></div>
+        <h3 class="card-title">REAL ESTATE LIAISONING — DDA, L&amp;DO, MCD, SUB-REGISTRAR OFFICE &amp; PROPERTY TAX DEPARTMENT<br/><span>(SaleDeed.com)</span></h3>
+        <p class="card-desc">End-to-end liaisoning with DDA, L&amp;DO, MCD, Sub-Registrar &amp; Property Tax dept.</p>
+        <a href="https://www.saledeed.com" target="_blank" rel="noopener noreferrer" class="card-link">Explore →</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <section class="cta-section" id="doobai"">
+    <div class="cta-inner">
+      <p class="cta-label">EXPLORE DOOBAI'S EXCLUSIVE PROPERTIES</p>
+      <h2 class="cta-heading">YOUR NEXT DREAM PROPERTY<br/>AWAITS IN <span>DUBAI</span></h2>
+      <p class="cta-sub">Luxury villas, high-rise apartments & investment properties — curated exclusively for you.</p>
+      <a href="https://doobai.com/" target="_blank" rel="noopener noreferrer" class="cta-btn">
+        <i class="fa-solid fa-gem"></i>
+        EXPLORE DUBAI PROPERTIES
+        <i class="fa-solid fa-arrow-right"></i>
+      </a>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+
+        <!-- Col 1: Parent Brand -->
+        <div class="footer-col footer-col-brand">
+          <img src="assets/logo-1.jpeg" alt="Property Baap" class="footer-brand-logo" />
+          <div class="footer-col-links">
+            <h4>PARENT BRAND</h4>
+            <a href="https://www.31son.com" target="_blank" rel="noopener noreferrer">31son Pvt. Ltd.</a>
+            <a href="https://www.31son.com/philosophy" target="_blank" rel="noopener noreferrer">Our Philosophy</a>
+            <a href="https://www.31son.com/careers" target="_blank" rel="noopener noreferrer">Careers</a>
+          </div>
+        </div>
+
+        <!-- Col 2: Legal & Title -->
+        <div class="footer-col">
+          <h4>LEGAL &amp; TITLE</h4>
+          <a href="https://www.titlewala.com" target="_blank" rel="noopener noreferrer">TitleWala.com</a>
+          <a href="https://www.saledeed.com" target="_blank" rel="noopener noreferrer">SaleDeed.com</a>
+          <a href="https://www.mutationwala.com" target="_blank" rel="noopener noreferrer">MutationWala.com</a>
+          <a href="https://www.noobjectioncertificate.com" target="_blank" rel="noopener noreferrer">NOC.com</a>
+        </div>
+
+        <!-- Col 3: South Delhi Network -->
+        <div class="footer-col">
+          <h4>SOUTH DELHI NETWORK</h4>
+          <a href="https://www.110024.com" target="_blank" rel="noopener noreferrer">110024.com (Lajpat Nagar)</a>
+          <!-- <a href="https://www.110021.com" target="_blank" rel="noopener noreferrer">110021.com (Chanakyapuri)</a>
+          <a href="https://www.110048.com" target="_blank" rel="noopener noreferrer">110048.com (GK)</a>
+          <a href="https://www.110049.com" target="_blank" rel="noopener noreferrer">110049.com (AIIMS)</a> -->
+        </div>
+
+        <!-- Col 4: Specialized Services -->
+        <div class="footer-col">
+          <h4>SPECIALIZED SERVICES</h4>
+          <a href="#" target="_blank" rel="noopener noreferrer">Bina Dalal Certified</a>
+          <a href="#" target="_blank" rel="noopener noreferrer">Property Owner Direct</a>
+          <a href="#" target="_blank" rel="noopener noreferrer">Builder Direct</a>
+        </div>
+
+        <!-- Col 5: Connect -->
+        <div class="footer-col">
+          <h4>CONNECT</h4>
+          <a href="#" target="_blank" rel="noopener noreferrer">H.Q. Address</a>
+          <a href="#" target="_blank" rel="noopener noreferrer">WhatsApp Support</a>
+          <a href="#" target="_blank" rel="noopener noreferrer">Consult an Expert</a>
+        </div>
+
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 31son Pvt. Ltd. | All Rights Reserved. Property Baap™ and the Crown Device are registered trademarks.</p>
+    </div>
+  </footer>
+
+  <!-- Google Translate (hidden widget) -->
+  <div id="google_translate_element" style="display:none"></div>
+  <script>
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({ pageLanguage: 'en', autoDisplay: false }, 'google_translate_element');
+    }
+  </script>
+  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="script.js"></script>
+
+  <!-- Floating Action Buttons -->
+  <div class="fab-container">
+    <a href="tel:+918800505050" class="fab fab-call" aria-label="Call us">
+      <i class="fa-solid fa-phone"></i>
+      <span class="fab-label">Call</span>
+    </a>
+    <a href="https://wa.me/918800505050" target="_blank" rel="noopener noreferrer" class="fab fab-whatsapp" aria-label="WhatsApp us">
+      <i class="fa-brands fa-whatsapp"></i>
+      <span class="fab-label">WhatsApp</span>
+    </a>
+  </div>
+
+</body>
+</html>

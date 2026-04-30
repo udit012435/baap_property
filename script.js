@@ -6,14 +6,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* ── Navbar scroll effect ── */
   const navbar = document.getElementById('navbar');
+  const goTopBtn = document.getElementById('goTopBtn');
+
   const onScroll = () => {
     if (window.scrollY > 40) {
       navbar.classList.add('scrolled');
     } else {
       navbar.classList.remove('scrolled');
     }
+    if (window.scrollY > 300) {
+      goTopBtn.classList.add('visible');
+    } else {
+      goTopBtn.classList.remove('visible');
+    }
   };
   window.addEventListener('scroll', onScroll, { passive: true });
+
+  goTopBtn.addEventListener('click', function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
 
   /* ── Hamburger / Mobile Menu ── */
   const hamburger = document.getElementById('hamburger');
@@ -173,15 +184,21 @@ document.addEventListener('DOMContentLoaded', () => {
     { code: 'th',    flag: '🇹🇭', name: 'Thai - ไทย'              },
   ];
 
-  const langSwitcher = document.getElementById('langSwitcher');
-  const langBtn      = document.getElementById('langBtn');
-  const langSearch   = document.getElementById('langSearch');
-  const langListEl   = document.getElementById('langList');
-  const langLabel    = document.getElementById('langLabel');
+  const langSwitcher       = document.getElementById('langSwitcher');
+  const langBtn            = document.getElementById('langBtn');
+  const langSearch         = document.getElementById('langSearch');
+  const langListEl         = document.getElementById('langList');
+  const langLabel          = document.getElementById('langLabel');
 
-  function buildLangList(filter) {
+  const mobileLangSwitcher = document.getElementById('mobileLangSwitcher');
+  const mobileLangBtn      = document.getElementById('mobileLangBtn');
+  const mobileLangSearch   = document.getElementById('mobileLangSearch');
+  const mobileLangListEl   = document.getElementById('mobileLangList');
+  const mobileLangLabel    = document.getElementById('mobileLangLabel');
+
+  function buildLangList(listEl, filter) {
     filter = filter || '';
-    langListEl.innerHTML = '';
+    listEl.innerHTML = '';
     languages
       .filter(l => l.name.toLowerCase().includes(filter.toLowerCase()))
       .forEach(l => {
@@ -194,18 +211,24 @@ document.addEventListener('DOMContentLoaded', () => {
             select.value = l.code;
             select.dispatchEvent(new Event('change'));
           }
-          langLabel.textContent = l.code.split('-')[0].toUpperCase();
+          const label = l.code.split('-')[0].toUpperCase();
+          langLabel.textContent = label;
+          mobileLangLabel.textContent = label;
           document.querySelectorAll('.lang-list li').forEach(function(i) { i.classList.remove('active'); });
-          li.classList.add('active');
+          document.querySelectorAll('.lang-list li[data-code="' + l.code + '"]').forEach(function(i) { i.classList.add('active'); });
           langSwitcher.classList.remove('open');
+          mobileLangSwitcher.classList.remove('open');
           langSearch.value = '';
-          buildLangList();
+          mobileLangSearch.value = '';
+          buildLangList(langListEl);
+          buildLangList(mobileLangListEl);
         });
-        langListEl.appendChild(li);
+        listEl.appendChild(li);
       });
   }
 
-  buildLangList();
+  buildLangList(langListEl);
+  buildLangList(mobileLangListEl);
 
   langBtn.addEventListener('click', function(e) {
     e.stopPropagation();
@@ -213,10 +236,18 @@ document.addEventListener('DOMContentLoaded', () => {
     if (langSwitcher.classList.contains('open')) langSearch.focus();
   });
 
-  langSearch.addEventListener('input', function() { buildLangList(langSearch.value); });
+  mobileLangBtn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    mobileLangSwitcher.classList.toggle('open');
+    if (mobileLangSwitcher.classList.contains('open')) mobileLangSearch.focus();
+  });
+
+  langSearch.addEventListener('input', function() { buildLangList(langListEl, langSearch.value); });
+  mobileLangSearch.addEventListener('input', function() { buildLangList(mobileLangListEl, mobileLangSearch.value); });
 
   document.addEventListener('click', function(e) {
     if (!langSwitcher.contains(e.target)) langSwitcher.classList.remove('open');
+    if (!mobileLangSwitcher.contains(e.target)) mobileLangSwitcher.classList.remove('open');
   });
 
 

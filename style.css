@@ -390,7 +390,7 @@ body { top: 0 !important; }
 
   .mobile-brand-tagline {
     font-family: 'Rajdhani', sans-serif;
-    font-size: 0.5rem;
+    font-size: 13px;
     font-weight: 500;
     color: var(--gold);
     letter-spacing: 0.15em;
@@ -620,7 +620,7 @@ body { top: 0 !important; }
 
 .hero-scard span {
   font-family: 'Rajdhani', sans-serif;
-  font-size: 0.82rem;
+  font-size: 0.95rem;
   font-weight: 700;
   letter-spacing: 0.1em;
   color: var(--gold);
@@ -639,7 +639,7 @@ body { top: 0 !important; }
 
 .hero-tagline {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(1rem, 2.5vw, 1.3rem);
+  font-size: clamp(1.1rem, 2.5vw, 1.45rem);
   font-style: italic;
   font-weight: 700;
   color: var(--gold);
@@ -660,7 +660,7 @@ body { top: 0 !important; }
 
 .hero-title {
   font-family: 'Cinzel', serif;
-  font-size: clamp(1rem, 4.2vw, 3.8rem);
+  font-size: clamp(1.2rem, 4.2vw, 3.8rem);
   font-weight: 700;
   line-height: 1.08;
   letter-spacing: 0.06em;
@@ -680,11 +680,11 @@ body { top: 0 !important; }
 
 .hero-sub {
   font-family: 'Rajdhani', sans-serif;
-  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
   font-weight: 400;
   color: var(--gold);
   letter-spacing: 0.06em;
-  margin-bottom: 2.5rem;
+  margin-bottom: 1rem;
   background: rgba(0, 0, 0, 0.55);
   border: 1px solid rgba(201, 168, 76, 0.45);
   border-radius: 6px;
@@ -698,6 +698,22 @@ body { top: 0 !important; }
   animation: fadeUp 0.8s 0.75s forwards;
 }
 
+.hero-tagline-hindi {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.15rem, 2.2vw, 1.5rem);
+  font-weight: 700;
+  font-style: italic;
+  color: var(--gold-light);
+  letter-spacing: 0.06em;
+  text-shadow: 0 0 24px rgba(232,201,106,0.5), 0 2px 12px rgba(0,0,0,0.6);
+  margin-bottom: 2rem;
+  display: block;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.8s 0.9s forwards;
+}
+
 .btn-explore {
   display: inline-block;
   padding: 1rem 2.5rem;
@@ -706,7 +722,7 @@ body { top: 0 !important; }
   border: 2px solid #0a0600;
   color: #0a0600;
   font-family: 'Rajdhani', sans-serif;
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: 700;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -780,7 +796,7 @@ body { top: 0 !important; }
 .features-strip-label {
   display: block;
   font-family: 'Rajdhani', sans-serif;
-  font-size: 0.72rem;
+  font-size: 0.88rem;
   font-weight: 700;
   letter-spacing: 0.3em;
   color: var(--gold);
@@ -791,11 +807,23 @@ body { top: 0 !important; }
 
 .features-strip-title {
   font-family: 'Cinzel', serif;
-  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
-  font-weight: 700;
+  font-size: clamp(2rem, 3.5vw, 2.4rem);
+  font-weight: 900;
   color: var(--gold);
   letter-spacing: 0.15em;
   text-shadow: 0 0 30px rgba(201,168,76,0.25);
+}
+
+.features-strip-subtitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  color: rgba(235,215,150,0.95);
+  letter-spacing: 0.04em;
+  line-height: 1.7;
+  margin-top: 0.75rem;
+  max-width: 680px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .features-strip-container {
@@ -844,7 +872,7 @@ body { top: 0 !important; }
 
 .feature-title {
   font-family: 'Cinzel', serif;
-  font-size: 0.78rem;
+  font-size: 1.1rem;
   font-weight: 700;
   letter-spacing: 0.12em;
   color: var(--gold);
@@ -855,7 +883,7 @@ body { top: 0 !important; }
 
 .feature-desc {
   font-family: 'Rajdhani', sans-serif;
-  font-size: 0.82rem;
+  font-size: 1.1rem;
   color: rgba(247, 215, 128, 0.837);
   line-height: 1.65;
   font-weight: 400;
@@ -919,7 +947,7 @@ body { top: 0 !important; }
 
 .section-title {
   font-family: 'Cinzel', serif;
-  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  font-size: clamp(2rem, 3.5vw, 2.4rem);
   font-weight: 700;
   color: var(--gold);
   letter-spacing: 0.15em;
@@ -1011,7 +1039,7 @@ body { top: 0 !important; }
 
 .card-title {
   font-family: 'Rajdhani', sans-serif;
-  font-size: 1.05rem;
+  font-size: 1.2rem;
   font-weight: 700;
   letter-spacing: 0.12em;
   color: var(--gold);
@@ -1020,13 +1048,13 @@ body { top: 0 !important; }
 }
 
 .card-title span {
-  font-size: 0.85rem;
+  font-size: 1rem;
   color: var(--gold-light);
 }
 
 .card-desc {
   font-family: 'Rajdhani', sans-serif;
-  font-size: 1rem;
+  font-size: 1.1rem;
   color: rgba(201,168,76,0.8);
   font-weight: 400;
   line-height: 1.7;
@@ -1035,7 +1063,7 @@ body { top: 0 !important; }
 
 .card-link {
   font-family: 'Rajdhani', sans-serif;
-  font-size: 0.92rem;
+  font-size: 1.05rem;
   font-weight: 700;
   letter-spacing: 0.14em;
   color: var(--gold);
@@ -1077,7 +1105,7 @@ body { top: 0 !important; }
 
 .cta-label {
   font-family: 'Rajdhani', sans-serif;
-  font-size: 0.75rem;
+  font-size: 0.9rem;
   font-weight: 700;
   letter-spacing: 0.3em;
   color: var(--gold-dark);
@@ -1087,7 +1115,7 @@ body { top: 0 !important; }
 
 .cta-heading {
   font-family: 'Cinzel', serif;
-  font-size: clamp(1.6rem, 4vw, 2.8rem);
+  font-size: clamp(1.9rem, 4vw, 2.8rem);
   font-weight: 700;
   color: var(--gold);
   letter-spacing: 0.06em;
@@ -1103,7 +1131,7 @@ body { top: 0 !important; }
 
 .cta-sub {
   font-family: 'Rajdhani', sans-serif;
-  font-size: 1rem;
+  font-size: 1.1rem;
   color: rgba(201,168,76,0.65);
   line-height: 1.7;
   margin-bottom: 2.5rem;
@@ -1114,12 +1142,12 @@ body { top: 0 !important; }
   display: inline-flex;
   align-items: center;
   gap: 0.75rem;
-  padding: 1rem 2.4rem;
+  padding: 0rem 1.4rem;
   background: var(--gold);
   border: 2px solid var(--gold);
   color: #0a0600;
   font-family: 'Rajdhani', sans-serif;
-  font-size: 0.95rem;
+  font-size: 1.05rem;
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -1137,8 +1165,8 @@ body { top: 0 !important; }
 }
 
 .cta-btn-icon {
-  width: 2rem;
-  height: 2rem;
+  width: 5rem;
+  height: 6rem;
   object-fit: contain;
   flex-shrink: 0;
   filter: drop-shadow(0 0 4px rgba(0,0,0,0.3));
@@ -1277,9 +1305,21 @@ body { top: 0 !important; }
 
 .footer-bottom p {
   font-family: 'Rajdhani', sans-serif;
-  font-size: 0.75rem;
-  color: #6b7280;
+  font-size: 0.88rem;
+  color: #a89880;
   letter-spacing: 0.05em;
+}
+
+.footer-powered {
+  color: var(--gold);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+.footer-powered:hover {
+  color: var(--gold-light);
 }
 
 /* — Footer responsive — */

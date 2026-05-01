@@ -146,22 +146,6 @@ body {
   filter: drop-shadow(0 0 8px var(--gold-glow));
 }
 
-.logo-fallback {
-  display: none;
-  width: 80px;
-  height: 80px;
-  background: linear-gradient(135deg, #1a1400 0%, #2e2000 100%);
-  border: 1.5px solid var(--gold);
-  border-radius: 6px;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 1px;
-  box-shadow: 0 0 16px var(--gold-glow);
-}
-
-.logo-crown { font-size: 14px; color: var(--gold); line-height: 1; }
-.logo-text-brand { font-family: 'Cinzel', serif; font-size: 16px; font-weight: 700; color: var(--gold); line-height: 1; }
 
 /* — Nav Top Links — */
 .nav-top-link {
@@ -1447,7 +1431,6 @@ body { top: 0 !important; }
 @media (max-width: 768px) {
   :root { --nav-top-h: 110px; --nav-h: 158px; }
   .logo-wrapper { width: 54px; height: 54px; }
-  .logo-fallback { width: 54px; height: 54px; }
   .services-grid { grid-template-columns: 1fr; max-width: 440px; margin: 0 auto; }
   .btn-explore {
     padding: 0.7rem 1.4rem;

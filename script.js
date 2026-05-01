@@ -163,23 +163,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   cards.forEach(card => cardObserver.observe(card));
 
-  /* ── Logo image: show fallback if upload not found ── */
-  const logoImg = document.getElementById('logoImg');
-  const logoFallback = document.getElementById('logoFallback');
-
-  if (logoImg) {
-    // If already broken (cached error)
-    if (!logoImg.complete || logoImg.naturalWidth === 0) {
-      logoImg.style.display = 'none';
-      logoFallback.style.display = 'flex';
-    }
-
-    logoImg.addEventListener('error', () => {
-      logoImg.style.display = 'none';
-      logoFallback.style.display = 'flex';
-    });
-  }
-
   /* ── Smooth scroll for anchor links ── */
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', (e) => {

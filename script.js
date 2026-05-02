@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* ── Navbar scroll effect ── */
   const navbar = document.getElementById('navbar');
-  const goTopBtn = document.getElementById('goTopBtn');
 
   const onScroll = () => {
     if (window.scrollY > 40) {
@@ -14,17 +13,8 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
       navbar.classList.remove('scrolled');
     }
-    if (window.scrollY > 300) {
-      goTopBtn.classList.add('visible');
-    } else {
-      goTopBtn.classList.remove('visible');
-    }
   };
   window.addEventListener('scroll', onScroll, { passive: true });
-
-  goTopBtn.addEventListener('click', function() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
 
   /* ── Hamburger / Mobile Menu ── */
   const hamburger = document.getElementById('hamburger');
@@ -115,6 +105,46 @@ document.addEventListener('DOMContentLoaded', () => {
         title.appendChild(node.cloneNode(true));
       }
     });
+
+    function replayAnimation() {
+      title.querySelectorAll('.char').forEach(function (s) {
+        const savedAnim  = s.style.animation;
+        const savedDelay = s.style.animationDelay;
+        s.style.animation = 'none';
+        void s.offsetWidth; // force reflow so browser treats it as a new animation
+        if (s.classList.contains('gold-char')) {
+          s.style.animation = savedAnim;
+        } else {
+          s.style.animation = '';
+          s.style.animationDelay = savedDelay;
+        }
+      });
+    }
+
+    setInterval(replayAnimation, 5000);
+  })();
+
+  /* ── Navbar Tagline: typing animation ── */
+  (function () {
+    const tagline = document.querySelector('.navbar-tagline-bar');
+    if (!tagline) return;
+
+    const fullText = tagline.textContent.trim();
+    const SPEED    = 60;    // ms per character
+    const CYCLE    = 5000;  // ms between restarts
+
+    function typeText() {
+      tagline.textContent = '';
+      let i = 0;
+      const t = setInterval(function () {
+        tagline.textContent += fullText[i];
+        i++;
+        if (i >= fullText.length) clearInterval(t);
+      }, SPEED);
+    }
+
+    typeText();
+    setInterval(typeText, CYCLE);
   })();
 
   /* ── Hero Particles ── */

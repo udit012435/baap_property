@@ -401,7 +401,7 @@ body { top: 0 !important; }
 
   .mobile-brand-baap {
     font-family: 'Rajdhani', sans-serif;
-    font-size: clamp(65px, 5.8vw, 3.7rem);
+    font-size: clamp(70px, 5.8vw, 3.7rem);
     font-weight: 800 !important;
     color: var(--gold);
     letter-spacing: 0.1em;

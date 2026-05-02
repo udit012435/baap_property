@@ -356,7 +356,7 @@ body { top: 0 !important; }
     font-size: clamp(1.45rem, 3.8vw, 1.5rem);
     font-weight: 700;
     color: var(--gold);
-    letter-spacing: 0.12em;
+    letter-spacing: 0.07em;
     /* text-transform: uppercase; */
     text-shadow: 0 0 18px var(--gold-glow);
     white-space: nowrap;

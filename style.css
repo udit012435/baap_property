@@ -353,7 +353,7 @@ body { top: 0 !important; }
     padding: 0.65rem 1rem;
     /* font-family: 'Cinzel', serif; */
     font-family:  'Merriweather', serif;
-    font-size: clamp(1.5rem, 3.8vw, 1.5rem);
+    font-size: clamp(1.48rem, 3.8vw, 1.5rem);
     font-weight: 700;
     color: var(--gold);
     letter-spacing: 0.12em;

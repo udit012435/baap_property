@@ -444,7 +444,7 @@ body { top: 0 !important; }
     /* font-family:  'Merriweather', serif; */
     font-family:  'Rajdhani', sans-serif;
     font-size: clamp(1.5rem, 3.8vw, 1.5rem);
-    font-weight: 600;
+    font-weight: 500;
     background: linear-gradient(135deg, #c9a84c 0%, #e8c96a 60%, #d4a82f 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;

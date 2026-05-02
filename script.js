@@ -70,69 +70,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* ── Hero Title: letter-by-letter animation ── */
+  /* ── Hero Title: no animation ── */
   (function () {
     const title = document.querySelector('.hero-title');
     if (!title) return;
-
-    // Override the CSS block animation — individual chars handle it now
     title.style.opacity = '1';
     title.style.transform = 'none';
     title.style.animation = 'none';
-
-    const BASE  = 0.3;   // seconds before first letter
-    const STEP  = 0.05;  // seconds between each letter
-    let idx = 0;
-
-    const nodes = Array.from(title.childNodes);
-    title.innerHTML = '';
-
-    nodes.forEach(function (node) {
-      if (node.nodeType === 3) {
-        // Text node — strip indentation whitespace, keep meaningful spaces
-        const text = node.textContent.replace(/\s*\n\s*/g, '');
-        [...text].forEach(function (ch) {
-          const s = document.createElement('span');
-          s.className = 'char';
-          s.textContent = ch === ' ' ? ' ' : ch;
-          s.style.animationDelay = (BASE + idx * STEP) + 's';
-          idx++;
-          title.appendChild(s);
-        });
-      } else if (node.nodeName === 'SPAN' && node.classList.contains('gold-text')) {
-        // BAAP letters — gold color + glow pulse after they appear
-        [...node.textContent].forEach(function (ch) {
-          const s = document.createElement('span');
-          s.className = 'char gold-char';
-          s.textContent = ch;
-          const d = BASE + idx * STEP;
-          s.style.animation =
-            'charReveal 0.5s cubic-bezier(0.22,0.61,0.36,1) ' + d + 's forwards,' +
-            'baapGlow 2.8s ease-in-out 1.8s infinite';
-          idx++;
-          title.appendChild(s);
-        });
-      } else if (node.nodeName === 'BR') {
-        title.appendChild(node.cloneNode(true));
-      }
-    });
-
-    function replayAnimation() {
-      title.querySelectorAll('.char').forEach(function (s) {
-        const savedAnim  = s.style.animation;
-        const savedDelay = s.style.animationDelay;
-        s.style.animation = 'none';
-        void s.offsetWidth; // force reflow so browser treats it as a new animation
-        if (s.classList.contains('gold-char')) {
-          s.style.animation = savedAnim;
-        } else {
-          s.style.animation = '';
-          s.style.animationDelay = savedDelay;
-        }
-      });
-    }
-
-    setInterval(replayAnimation, 5000);
   })();
 
   /* ── Navbar Tagline: typing animation ── */

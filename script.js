@@ -6,13 +6,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* ── Navbar scroll effect ── */
   const navbar = document.getElementById('navbar');
+  let lastScrollY = window.scrollY;
 
   const onScroll = () => {
-    if (window.scrollY > 40) {
+    const currentY = window.scrollY;
+
+    if (currentY > 40) {
       navbar.classList.add('scrolled');
     } else {
       navbar.classList.remove('scrolled');
     }
+
+    if (currentY > lastScrollY && currentY > 80) {
+      navbar.classList.add('nav-hidden');
+    } else {
+      navbar.classList.remove('nav-hidden');
+    }
+
+    lastScrollY = currentY;
   };
   window.addEventListener('scroll', onScroll, { passive: true });
 

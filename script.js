@@ -88,18 +88,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const SPEED    = 60;    // ms per character
     const CYCLE    = 5000;  // ms between restarts
 
-    function typeText() {
-      tagline.textContent = '';
-      let i = 0;
-      const t = setInterval(function () {
-        tagline.textContent += fullText[i];
-        i++;
-        if (i >= fullText.length) clearInterval(t);
-      }, SPEED);
-    }
-
-    typeText();
-    setInterval(typeText, CYCLE);
+    let i = 0;
+    tagline.textContent = '';
+    const t = setInterval(function () {
+      tagline.textContent += fullText[i];
+      i++;
+      if (i >= fullText.length) clearInterval(t);
+    }, SPEED);
   })();
 
   /* ── Hero Particles ── */

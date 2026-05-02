@@ -51,6 +51,16 @@ body {
   box-shadow: 0 4px 40px rgba(0,0,0,0.7);
 }
 
+.navbar.nav-hidden {
+  transform: translateY(-100%);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.navbar:not(.nav-hidden) {
+  transform: translateY(0);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 /* — Top Row — */
 .navbar-top {
   border-bottom: 1px solid var(--border-gold);

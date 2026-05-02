@@ -26,6 +26,13 @@ body {
   line-height: 1.6;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  background: linear-gradient(135deg, #c9a84c 0%, #e8c96a 60%, #d4a82f 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
 /* ===========================
    SCROLLBAR
    =========================== */
@@ -464,7 +471,10 @@ body { top: 0 !important; }
     font-family: 'Montserrat', sans-serif;
     font-size: clamp(1.8rem, 5vw, 1.8rem);
     font-weight: 700;
-    color: var(--gold);
+    background: linear-gradient(135deg, #c9a84c 0%, #e8c96a 60%, #d4a82f 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     letter-spacing: 1px;
     white-space: nowrap;
   }
@@ -473,7 +483,10 @@ body { top: 0 !important; }
     font-family: 'Montserrat', sans-serif;
     font-size: clamp(53px, 5.8vw, 3.7rem);
     font-weight: 800 !important;
-    color: var(--gold);
+    background: linear-gradient(135deg, #c9a84c 0%, #e8c96a 60%, #d4a82f 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     letter-spacing: 0.1em;
     white-space: nowrap;
   }
@@ -749,10 +762,18 @@ body { top: 0 !important; }
   color: var(--gold);
   white-space: nowrap;
   margin-bottom: 1.25rem;
-  opacity: 0;
-  transform: translateY(18px);
-  animation: titleReveal 1.2s cubic-bezier(0.22, 0.61, 0.36, 1) 0.4s forwards;
-  text-shadow: 0 0 60px rgba(201,168,76,0.4), 0 2px 30px rgba(0,0,0,0.7);
+  opacity: 1;
+  transform: none;
+  animation: none;
+  /* text-shadow: 0 0 60px rgba(201,168,76,0.4), 0 2px 30px rgba(0,0,0,0.7); */
+}
+
+.hero-title .char,
+.hero-title .gold-char {
+  animation: none !important;
+  opacity: 1 !important;
+  transform: none !important;
+  filter: none !important;
 }
 
 .gold-text {
@@ -762,10 +783,10 @@ body { top: 0 !important; }
 
 .char {
   display: inline-block;
-  opacity: 0;
-  transform: translateY(26px);
-  filter: blur(5px);
-  animation: charReveal 0.5s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+  background: linear-gradient(135deg, #c9a84c 0%, #e8c96a 60%, #d4a82f 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .gold-char {

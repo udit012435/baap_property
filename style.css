@@ -414,9 +414,9 @@ body { top: 0 !important; }
     /* font-family: 'Cinzel', serif; */
     font-family:  'Merriweather', serif;
     font-size: clamp(1.5rem, 3.8vw, 1.5rem);
-    font-weight: 700;
+    font-weight: 500;
     color: var(--gold);
-    letter-spacing: 0.07em;
+    letter-spacing: 0.12em;
     /* text-transform: uppercase; */
     text-shadow: 0 0 18px var(--gold-glow);
     white-space: nowrap;
@@ -451,8 +451,8 @@ body { top: 0 !important; }
   }
 
   .mobile-brand-property {
-    font-family: 'Rajdhani', sans-serif;
-    font-size: clamp(2.2rem, 5vw, 1.6rem);
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(1.8rem, 5vw, 1.8rem);
     font-weight: 700;
     color: var(--gold);
     letter-spacing: 1px;
@@ -460,8 +460,8 @@ body { top: 0 !important; }
   }
 
   .mobile-brand-baap {
-    font-family: 'Rajdhani', sans-serif;
-    font-size: clamp(65px, 5.8vw, 3.7rem);
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(53px, 5.8vw, 3.7rem);
     font-weight: 800 !important;
     color: var(--gold);
     letter-spacing: 0.1em;
@@ -528,7 +528,7 @@ body { top: 0 !important; }
 
 .mobile-nav-sub a {
   padding: 0.6rem 0.5rem;
-  color: var(--text-muted);
+  color: var(--gold);
   font-family: 'Rajdhani', sans-serif;
   font-size: 0.82rem;
   font-weight: 500;
@@ -1357,7 +1357,7 @@ body { top: 0 !important; }
 /* — Column headings — */
 .footer-col h4 {
   font-family: 'Rajdhani', sans-serif;
-  font-size: 0.78rem;
+  font-size: 1.35rem;
   font-weight: 700;
   letter-spacing: 0.18em;
   color: #C5A059;
@@ -1371,8 +1371,9 @@ body { top: 0 !important; }
 .footer-col a {
   display: block;
   font-family: 'Rajdhani', sans-serif;
-  font-size: 0.78rem;
-  color: #d1d5db;
+  font-size: 1.2rem;
+  /* color: #d1d5db; */
+  color: var(--gold);
   text-decoration: none;
   margin-bottom: 0.45rem;
   letter-spacing: 0.03em;
@@ -1539,13 +1540,17 @@ body { top: 0 !important; }
   }
 
   .mobile-break { display: inline; }
-  .hero-content { margin-top: 2rem; }
+  .hero-content { margin-top: 4rem; }
   .hero-title {
     font-size: clamp(2rem, 9vw, 3rem);
     white-space: normal;
     text-align: center;
     line-height: 1.15;
   }
+}
+
+@media (max-width: 375px) {
+  .hero-content { margin-top: 4rem; }
 }
 
 /* ===========================

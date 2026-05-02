@@ -99,21 +99,81 @@ body {
   align-items: center;
 }
 
+.nav-top-item {
+  position: relative;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  border-right: 1px solid var(--border-gold);
+}
+
+.nav-top-item:last-child {
+  border-right: none;
+}
+
 .nav-links-row .nav-top-link {
   height: 28px;
-  border-bottom: none;
-  border-right: 1px solid var(--border-gold);
+  border: none;
+  background: none;
   padding: 0 1.1rem;
   font-size: 0.72rem;
+  color: var(--text-white);
+  font-family: 'Rajdhani', sans-serif;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 
 .nav-links-row .nav-top-link small {
   font-size: 0.58rem;
+  text-transform: none;
 }
 
-.nav-links-row .nav-top-link:last-child {
-  border-right: none;
+.nav-top-dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 180px;
+  background: rgba(8, 6, 2, 0.97);
+  border: 1px solid var(--border-gold);
+  border-top: 2px solid var(--gold);
+  flex-direction: column;
+  z-index: 1100;
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.nav-top-item:hover .nav-top-dropdown {
+  display: flex;
+}
+
+.nav-top-dropdown a {
+  padding: 0.55rem 1.1rem;
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--gold);
+  text-decoration: none;
+  white-space: nowrap;
+  border-bottom: 1px solid var(--border-gold);
+  font-family: 'Rajdhani', sans-serif;
+  letter-spacing: 0.04em;
+  transition: color var(--transition), background var(--transition);
+}
+
+.nav-top-dropdown a:last-child {
+  border-bottom: none;
+}
+
+.nav-top-dropdown a:hover {
+  color: var(--gold);
+  /* background: rgba(201, 168, 76, 0.08); */
+  background: var(--gold);
+  color:#000000;
 }
 
 .tagline-accent {
@@ -155,7 +215,7 @@ display: flex;
   justify-content: center;
   padding: 0 0.8rem; /* Pehle 1rem thi, thodi reduce ki hai overlap rokne ke liye */
   height: var(--nav-top-h);
-  color: var(--gold);
+  color: var(--gold) !important;
   font-family: 'Rajdhani', sans-serif;
   font-size: 0.8rem;
   font-weight: 700;
@@ -353,7 +413,7 @@ body { top: 0 !important; }
     padding: 0.65rem 1rem;
     /* font-family: 'Cinzel', serif; */
     font-family:  'Merriweather', serif;
-    font-size: clamp(1.45rem, 3.8vw, 1.5rem);
+    font-size: clamp(1.5rem, 3.8vw, 1.5rem);
     font-weight: 700;
     color: var(--gold);
     letter-spacing: 0.07em;
@@ -1172,9 +1232,9 @@ body { top: 0 !important; }
   border: 2px solid var(--gold);
   color: #0a0600;
   font-family: 'Rajdhani', sans-serif;
-  font-size: 1.5rem;
+  font-size: 1.05rem;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   text-decoration: none;
   border-radius: 4px;

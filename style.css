@@ -467,6 +467,12 @@ body { top: 0 !important; }
     /* padding: 0 0.5rem; */
   }
 
+  .mobile-brand-img {
+    height: 60px;
+    width: auto;
+    object-fit: contain;
+  }
+
   .mobile-brand-property {
     font-family: 'Montserrat', sans-serif;
     font-size: clamp(1.8rem, 5vw, 1.8rem);

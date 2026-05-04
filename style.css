@@ -1039,14 +1039,31 @@ body { top: 0 !important; }
 }
 
 .feature-box--billionaire {
-  background: linear-gradient(145deg, #1a1400 0%, #0f0c00 60%, #1c1600 100%);
-  border-color: rgba(201,168,76,0.65);
-  box-shadow: 0 0 28px rgba(201,168,76,0.08);
+  background: linear-gradient(135deg, #c9a84c 0%, #e8c96a 60%, #d4a82f 100%);
+  border-color: var(--gold);
+  box-shadow: 0 0 30px rgba(201,168,76,0.25);
+}
+
+.feature-box--billionaire::before {
+  background: linear-gradient(90deg, transparent, rgba(0,0,0,0.3), transparent);
+}
+
+.feature-box--billionaire .feature-title {
+  background: none;
+  -webkit-background-clip: unset;
+  background-clip: unset;
+  -webkit-text-fill-color: #0a0600;
+  color: #0a0600;
+}
+
+.feature-box--billionaire .feature-desc {
+  color: rgba(10,6,0,0.8);
 }
 
 .feature-box--billionaire:hover {
-  border-color: var(--gold);
-  box-shadow: 0 8px 40px rgba(0,0,0,0.6), 0 0 35px rgba(201,168,76,0.22);
+  background: linear-gradient(135deg, #e8c96a 0%, #fff0a0 60%, #e8c96a 100%);
+  border-color: var(--gold-light);
+  box-shadow: 0 8px 40px rgba(0,0,0,0.3), 0 0 45px rgba(201,168,76,0.45);
 }
 
 .feature-crown {
@@ -1174,14 +1191,62 @@ body { top: 0 !important; }
 .service-card:hover::before { border-color: rgba(201,168,76,0.55); }
 
 .service-card--billionaire {
-  background: linear-gradient(145deg, #1a1400 0%, #0f0c00 60%, #1c1600 100%) !important;
-  border-color: rgba(201,168,76,0.65);
-  box-shadow: 0 12px 55px rgba(0,0,0,0.65), 0 0 28px rgba(201,168,76,0.08);
+  background: linear-gradient(135deg, #c9a84c 0%, #e8c96a 60%, #d4a82f 100%) !important;
+  border-color: var(--gold);
+  box-shadow: 0 12px 55px rgba(0,0,0,0.4), 0 0 30px rgba(201,168,76,0.25);
+}
+
+.service-card--billionaire::before {
+  border-color: rgba(0,0,0,0.15);
+}
+
+.service-card--billionaire .card-icon-wrap {
+  border: 2px solid rgba(10,6,0,0.5);
+  background: rgba(10,6,0,0.12);
+  box-shadow: 0 0 0 4px rgba(10,6,0,0.08);
+}
+
+.service-card--billionaire:hover .card-icon-wrap {
+  background: rgba(10,6,0,0.2);
+  box-shadow: 0 0 16px rgba(10,6,0,0.25);
+}
+
+.service-card--billionaire .card-fa-icon {
+  color: #0a0600;
+  filter: none;
+}
+
+.service-card--billionaire .card-title {
+  background: none;
+  -webkit-background-clip: unset;
+  background-clip: unset;
+  -webkit-text-fill-color: #0a0600;
+  color: #0a0600;
+}
+
+.service-card--billionaire .card-title span {
+  -webkit-text-fill-color: rgba(10,6,0,0.65);
+  color: rgba(10,6,0,0.65);
+}
+
+.service-card--billionaire .card-desc {
+  color: rgba(10,6,0,0.75);
+}
+
+.service-card--billionaire .card-link {
+  color: #0a0600;
+  border-color: rgba(10,6,0,0.3);
+}
+
+.service-card--billionaire .card-link:hover {
+  color: #0a0600;
+  border-color: #0a0600;
 }
 
 .service-card--billionaire:hover {
-  border-color: var(--gold);
-  box-shadow: 0 20px 60px rgba(0,0,0,0.6), 0 0 35px rgba(201,168,76,0.22);
+  background: linear-gradient(135deg, #e8c96a 0%, #fff0a0 60%, #e8c96a 100%) !important;
+  border-color: var(--gold-light);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3), 0 0 45px rgba(201,168,76,0.45);
 }
 
 .service-card.featured {
@@ -1245,7 +1310,7 @@ body { top: 0 !important; }
   font-family: 'Rajdhani', sans-serif;
   font-size: 1.1rem;
   color: rgba(201,168,76,0.8);
-  font-weight: 400;
+  font-weight: 600;
   line-height: 1.7;
   margin-bottom: 1.5rem;
 }

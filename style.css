@@ -522,7 +522,7 @@ body { top: 0 !important; }
   top: var(--nav-h);
   left: 0; right: 0;
   background: #090705;
-  border-bottom: 1px solid var(--border-gold);
+  /* border-bottom: 1px solid var(--border-gold); */
   z-index: 999;
   max-height: 0;
   overflow: hidden;

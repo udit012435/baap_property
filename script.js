@@ -294,6 +294,62 @@ document.addEventListener('DOMContentLoaded', () => {
     setInterval(advanceSlide, 6000);
   }
 
+  /* ── Careers Form ── */
+  const careersForm = document.getElementById('careersForm');
+  if (careersForm) {
+    careersForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = careersForm.querySelector('.careers-submit');
+      const original = btn.textContent;
+      btn.textContent = 'SENDING…';
+      btn.disabled = true;
+
+      try {
+        const res = await fetch('mailer.php', {
+          method: 'POST',
+          body: new FormData(careersForm),
+        });
+        const data = await res.json();
+        if (data.success) {
+          careersForm.reset();
+          btn.textContent = 'SUBMITTED ✓';
+          btn.style.background = 'linear-gradient(135deg,#3a7d44,#52b069)';
+          setTimeout(() => {
+            btn.textContent = original;
+            btn.style.background = '';
+            btn.disabled = false;
+          }, 4000);
+        } else {
+          alert(data.message || 'Something went wrong. Please try again.');
+          btn.textContent = original;
+          btn.disabled = false;
+        }
+      } catch {
+        alert('Network error. Please try again.');
+        btn.textContent = original;
+        btn.disabled = false;
+      }
+    });
+  }
+
+  /* ── About Section Accordion ── */
+  document.querySelectorAll('.about-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const answer = btn.nextElementSibling;
+      const isOpen = btn.getAttribute('aria-expanded') === 'true';
+
+      document.querySelectorAll('.about-question').forEach(b => {
+        b.setAttribute('aria-expanded', 'false');
+        b.nextElementSibling.style.maxHeight = null;
+      });
+
+      if (!isOpen) {
+        btn.setAttribute('aria-expanded', 'true');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+      }
+    });
+  });
+
   /* ── Subtle navbar logo pulse on page load ── */
   const logoWrapper = document.querySelector('.logo-wrapper');
   if (logoWrapper) {

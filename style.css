@@ -1449,7 +1449,8 @@ body { top: 0 !important; }
   font-size: 1.2rem;
   /* color: #d1d5db; */
   /* color: var(--gold); */
-  color: #e7c15b;
+  /* color: #e7c15b; */
+  color: #666;
   text-decoration: none;
   margin-bottom: 0.45rem;
   letter-spacing: 0.03em;

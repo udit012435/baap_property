@@ -398,6 +398,41 @@
           </div>
         </div>
 
+        <div class="about-item about-item--promise">
+          <button class="about-question about-question--promise" aria-expanded="false">
+            <span>BAAP PROMISE</span>
+            <i class="fa-solid fa-plus about-icon"></i>
+          </button>
+          <div class="about-answer">
+            <div class="about-answer-inner">
+              <p>Every client who closes a deal with us becomes a part of our legacy. As a token of that trust, we offer exclusive long-term benefits — because your journey with us doesn't end at the deal.</p>
+              <div class="promise-items">
+                <div class="promise-item">
+                  <div class="promise-item-icon"><i class="fa-solid fa-percent"></i></div>
+                  <div class="promise-item-text">
+                    <strong>10% Exclusive Discount — Valid 5 Years</strong>
+                    <p>Every client who closes a deal with us receives an exclusive 10% discount on their next purchase, valid for the next 5 years.</p>
+                  </div>
+                </div>
+                <div class="promise-item">
+                  <div class="promise-item-icon"><i class="fa-solid fa-headset"></i></div>
+                  <div class="promise-item-text">
+                    <strong>Complimentary Expert Consultation — 5 Years</strong>
+                    <p>Enjoy complimentary consultation support from our expert team for the next 5 years.</p>
+                  </div>
+                </div>
+                <div class="promise-item">
+                  <div class="promise-item-icon"><i class="fa-solid fa-file-circle-check"></i></div>
+                  <div class="promise-item-text">
+                    <strong>Complete Documentation Assistance — Free</strong>
+                    <p>Complete documentation assistance — absolutely free of charge.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div class="about-item">
           <button class="about-question" aria-expanded="false">
             <span>CAREERS</span>
@@ -573,9 +608,6 @@
 
   <!-- Floating Action Buttons -->
   <div class="fab-container">
-    <button class="fab fab-offer" id="offerFabBtn" aria-label="View exclusive offers">
-      <i class="fa-solid fa-gift"></i>
-    </button>
     <div class="fab-right-group">
       <a href="tel:+918800505050" class="fab fab-call" aria-label="Call us">
         <i class="fa-solid fa-phone"></i>
@@ -586,44 +618,46 @@
     </div>
   </div>
 
-  <!-- Offer Modal -->
-  <div class="offer-modal-overlay" id="offerModal" role="dialog" aria-modal="true" aria-labelledby="offerModalTitle">
-    <div class="offer-modal">
-      <button class="offer-modal-close" id="offerModalClose" aria-label="Close">
-        <i class="fa-solid fa-xmark"></i>
-      </button>
-      <div class="offer-modal-header">
-        <span class="offer-modal-badge"><i class="fa-solid fa-crown"></i> EXCLUSIVE FOR DEAL CLOSERS</span>
-        <h2 class="offer-modal-title" id="offerModalTitle">Your <span>Deal Perks</span></h2>
-        <p class="offer-modal-subtitle">Close a deal with us and unlock these lifetime advantages</p>
+  <!-- BAAP Promise Side Note -->
+  <div class="baap-promise-wrapper" id="baapPromiseWrapper">
+    <div class="baap-promise-note">
+      <div class="baap-note-tape"></div>
+      <div class="baap-note-body">
+        <p class="baap-note-heading">Close A Deal.<br>Unlock Your Perks.</p>
+        <p class="baap-note-sub">Exclusive benefits for every deal closer</p>
+        <div class="baap-note-divider"></div>
+        <div class="baap-note-items">
+          <div class="baap-note-item">
+            <div class="baap-note-icon"><i class="fa-solid fa-percent"></i></div>
+            <div class="baap-note-text">
+              <strong>10% Discount — 5 Years</strong>
+              <p>Every client who closes a deal with us receives an exclusive 10% discount on their next purchase, valid for the next 5 years.</p>
+            </div>
+          </div>
+          <div class="baap-note-item">
+            <div class="baap-note-icon"><i class="fa-solid fa-headset"></i></div>
+            <div class="baap-note-text">
+              <strong>Free Consultation — 5 Years</strong>
+              <p>Enjoy complimentary consultation support from our expert team for the next 5 years.</p>
+            </div>
+          </div>
+          <div class="baap-note-item">
+            <div class="baap-note-icon"><i class="fa-solid fa-file-circle-check"></i></div>
+            <div class="baap-note-text">
+              <strong>Free Documentation</strong>
+              <p>Complete documentation assistance — absolutely free of charge.</p>
+            </div>
+          </div>
+        </div>
+        <a href="https://wa.me/918800505050" target="_blank" rel="noopener noreferrer" class="baap-note-cta">
+          CLAIM YOUR PERKS <i class="fa-solid fa-arrow-right"></i>
+        </a>
       </div>
-      <div class="offer-modal-items">
-        <div class="offer-item">
-          <div class="offer-item-icon"><i class="fa-solid fa-percent"></i></div>
-          <div class="offer-item-content">
-            <h3>10% Exclusive Discount</h3>
-            <p>Every client who closes a deal with us receives an exclusive 10% discount on their next purchase, valid for the next 5 years.</p>
-          </div>
-        </div>
-        <div class="offer-item">
-          <div class="offer-item-icon"><i class="fa-solid fa-headset"></i></div>
-          <div class="offer-item-content">
-            <h3>Free Expert Consultation</h3>
-            <p>Enjoy complimentary consultation support from our expert team for the next 5 years.</p>
-          </div>
-        </div>
-        <div class="offer-item">
-          <div class="offer-item-icon"><i class="fa-solid fa-file-circle-check"></i></div>
-          <div class="offer-item-content">
-            <h3>Free Documentation Assistance</h3>
-            <p>Complete documentation assistance — absolutely free of charge.</p>
-          </div>
-        </div>
-      </div>
-      <a href="https://wa.me/918800505050" target="_blank" rel="noopener noreferrer" class="offer-modal-cta">
-        CLAIM YOUR OFFER <i class="fa-solid fa-arrow-right"></i>
-      </a>
     </div>
+    <button class="baap-promise-tab" id="baapPromiseTab" aria-label="BAAP Promise offers">
+      <span class="baap-tab-text">BAAP Promise</span>
+      <i class="fa-solid fa-chevron-right baap-tab-chevron"></i>
+    </button>
   </div>
 
 </body>

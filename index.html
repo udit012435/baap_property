@@ -573,14 +573,57 @@
 
   <!-- Floating Action Buttons -->
   <div class="fab-container">
-    <a href="tel:+918800505050" class="fab fab-call" aria-label="Call us">
-      <i class="fa-solid fa-phone"></i>
-      <span class="fab-label">Call</span>
-    </a>
-    <a href="https://wa.me/918800505050" target="_blank" rel="noopener noreferrer" class="fab fab-whatsapp" aria-label="WhatsApp us">
-      <i class="fa-brands fa-whatsapp"></i>
-      <span class="fab-label">WhatsApp</span>
-    </a>
+    <button class="fab fab-offer" id="offerFabBtn" aria-label="View exclusive offers">
+      <i class="fa-solid fa-gift"></i>
+    </button>
+    <div class="fab-right-group">
+      <a href="tel:+918800505050" class="fab fab-call" aria-label="Call us">
+        <i class="fa-solid fa-phone"></i>
+      </a>
+      <a href="https://wa.me/918800505050" target="_blank" rel="noopener noreferrer" class="fab fab-whatsapp" aria-label="WhatsApp us">
+        <i class="fa-brands fa-whatsapp"></i>
+      </a>
+    </div>
+  </div>
+
+  <!-- Offer Modal -->
+  <div class="offer-modal-overlay" id="offerModal" role="dialog" aria-modal="true" aria-labelledby="offerModalTitle">
+    <div class="offer-modal">
+      <button class="offer-modal-close" id="offerModalClose" aria-label="Close">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <div class="offer-modal-header">
+        <span class="offer-modal-badge"><i class="fa-solid fa-crown"></i> EXCLUSIVE FOR DEAL CLOSERS</span>
+        <h2 class="offer-modal-title" id="offerModalTitle">Your <span>Deal Perks</span></h2>
+        <p class="offer-modal-subtitle">Close a deal with us and unlock these lifetime advantages</p>
+      </div>
+      <div class="offer-modal-items">
+        <div class="offer-item">
+          <div class="offer-item-icon"><i class="fa-solid fa-percent"></i></div>
+          <div class="offer-item-content">
+            <h3>10% Exclusive Discount</h3>
+            <p>Every client who closes a deal with us receives an exclusive 10% discount on their next purchase, valid for the next 5 years.</p>
+          </div>
+        </div>
+        <div class="offer-item">
+          <div class="offer-item-icon"><i class="fa-solid fa-headset"></i></div>
+          <div class="offer-item-content">
+            <h3>Free Expert Consultation</h3>
+            <p>Enjoy complimentary consultation support from our expert team for the next 5 years.</p>
+          </div>
+        </div>
+        <div class="offer-item">
+          <div class="offer-item-icon"><i class="fa-solid fa-file-circle-check"></i></div>
+          <div class="offer-item-content">
+            <h3>Free Documentation Assistance</h3>
+            <p>Complete documentation assistance — absolutely free of charge.</p>
+          </div>
+        </div>
+      </div>
+      <a href="https://wa.me/918800505050" target="_blank" rel="noopener noreferrer" class="offer-modal-cta">
+        CLAIM YOUR OFFER <i class="fa-solid fa-arrow-right"></i>
+      </a>
+    </div>
   </div>
 
 </body>

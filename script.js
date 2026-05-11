@@ -368,6 +368,33 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  /* ── Offer Modal ── */
+  const offerFabBtn    = document.getElementById('offerFabBtn');
+  const offerModal     = document.getElementById('offerModal');
+  const offerModalClose = document.getElementById('offerModalClose');
+
+  function openOfferModal() {
+    offerModal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeOfferModal() {
+    offerModal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  if (offerFabBtn) offerFabBtn.addEventListener('click', openOfferModal);
+  if (offerModalClose) offerModalClose.addEventListener('click', closeOfferModal);
+
+  if (offerModal) {
+    offerModal.addEventListener('click', (e) => {
+      if (e.target === offerModal) closeOfferModal();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && offerModal.classList.contains('open')) closeOfferModal();
+    });
+  }
+
   /* ── Subtle navbar logo pulse on page load ── */
   const logoWrapper = document.querySelector('.logo-wrapper');
   if (logoWrapper) {

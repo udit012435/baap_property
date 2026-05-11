@@ -332,6 +332,24 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  /* ── Connect Footer Accordion ── */
+  document.querySelectorAll('.connect-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const answer = btn.nextElementSibling;
+      const isOpen = btn.getAttribute('aria-expanded') === 'true';
+
+      document.querySelectorAll('.connect-question').forEach(b => {
+        b.setAttribute('aria-expanded', 'false');
+        b.nextElementSibling.style.maxHeight = null;
+      });
+
+      if (!isOpen) {
+        btn.setAttribute('aria-expanded', 'true');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+      }
+    });
+  });
+
   /* ── About Section Accordion ── */
   document.querySelectorAll('.about-question').forEach(btn => {
     btn.addEventListener('click', () => {

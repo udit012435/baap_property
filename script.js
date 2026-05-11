@@ -368,30 +368,24 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* ── Offer Modal ── */
-  const offerFabBtn    = document.getElementById('offerFabBtn');
-  const offerModal     = document.getElementById('offerModal');
-  const offerModalClose = document.getElementById('offerModalClose');
+  /* ── BAAP Promise Side Note ── */
+  const baapWrapper = document.getElementById('baapPromiseWrapper');
+  const baapTab     = document.getElementById('baapPromiseTab');
 
-  function openOfferModal() {
-    offerModal.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeOfferModal() {
-    offerModal.classList.remove('open');
-    document.body.style.overflow = '';
-  }
-
-  if (offerFabBtn) offerFabBtn.addEventListener('click', openOfferModal);
-  if (offerModalClose) offerModalClose.addEventListener('click', closeOfferModal);
-
-  if (offerModal) {
-    offerModal.addEventListener('click', (e) => {
-      if (e.target === offerModal) closeOfferModal();
+  if (baapTab && baapWrapper) {
+    baapTab.addEventListener('click', (e) => {
+      e.stopPropagation();
+      baapWrapper.classList.toggle('open');
     });
+
+    document.addEventListener('click', (e) => {
+      if (baapWrapper.classList.contains('open') && !baapWrapper.contains(e.target)) {
+        baapWrapper.classList.remove('open');
+      }
+    });
+
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && offerModal.classList.contains('open')) closeOfferModal();
+      if (e.key === 'Escape') baapWrapper.classList.remove('open');
     });
   }
 

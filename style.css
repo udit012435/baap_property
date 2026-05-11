@@ -1642,7 +1642,8 @@ body { top: 0 !important; }
    FOOTER
    =========================== */
 .footer {
-  background: #111111;
+  /* background: #111111; */
+  background: #050505;
   border-top: 1px solid #333333;
 }
 
@@ -1756,6 +1757,76 @@ body { top: 0 !important; }
 }
 
 .footer-col a:hover { color: #ffffff; }
+
+/* — Connect accordion (footer) — */
+.connect-item {
+  overflow: hidden;
+}
+
+.connect-question {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  color: #888;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  margin-bottom: 0.45rem;
+  transition: color 0.2s;
+}
+
+.connect-question:hover {
+  color: #ffffff;
+}
+
+.connect-question[aria-expanded="true"] {
+  color: #ffffff;
+}
+
+.connect-icon {
+  font-size: 0.65rem;
+  color: #888;
+  flex-shrink: 0;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.connect-question[aria-expanded="true"] .connect-icon {
+  transform: rotate(180deg);
+  color: #ffffff;
+}
+
+.connect-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.connect-answer-inner {
+  padding-bottom: 0.45rem;
+}
+
+.connect-answer-inner a {
+  display: block !important;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.05rem !important;
+  color: #C5A059 !important;
+  text-decoration: none;
+  letter-spacing: 0.03em;
+  margin-bottom: 0 !important;
+  transition: color 0.15s;
+}
+
+.connect-answer-inner a:hover {
+  color: #ffffff !important;
+}
 
 /* — Copyright bar — */
 .footer-bottom {

@@ -356,14 +356,29 @@ document.addEventListener('DOMContentLoaded', () => {
       const answer = btn.nextElementSibling;
       const isOpen = btn.getAttribute('aria-expanded') === 'true';
 
+      // Close all others (skip current if we're about to open it)
       document.querySelectorAll('.about-question').forEach(b => {
+        if (!isOpen && b === btn) return;
         b.setAttribute('aria-expanded', 'false');
-        b.nextElementSibling.style.maxHeight = null;
+        const sib = b.nextElementSibling;
+        // If sib has max-height:none we must first set a px value so CSS can animate to 0
+        if (sib.style.maxHeight === 'none') {
+          sib.style.maxHeight = sib.scrollHeight + 'px';
+          requestAnimationFrame(() => requestAnimationFrame(() => { sib.style.maxHeight = null; }));
+        } else {
+          sib.style.maxHeight = null;
+        }
       });
 
       if (!isOpen) {
         btn.setAttribute('aria-expanded', 'true');
         answer.style.maxHeight = answer.scrollHeight + 'px';
+        // After open animation: remove constraint so content never clips
+        answer.addEventListener('transitionend', () => {
+          if (btn.getAttribute('aria-expanded') === 'true') {
+            answer.style.maxHeight = 'none';
+          }
+        }, { once: true });
       }
     });
   });
@@ -373,6 +388,23 @@ document.addEventListener('DOMContentLoaded', () => {
   const baapWrapper    = document.getElementById('baapPromiseWrapper');
   const promiseBtn     = document.querySelector('.about-question--promise');
   const promiseItem    = document.querySelector('.about-item--promise');
+
+  /* ── BAAP Tab slide toggle ── */
+  const baapTabToggle = document.getElementById('baapTabToggle');
+  if (baapTabToggle && baapWrapper) {
+    baapTabToggle.addEventListener('click', () => {
+      baapWrapper.classList.toggle('tab-visible');
+    });
+  }
+
+  const promiseRejectBtn = document.querySelector('.promise-cta-reject');
+  if (promiseRejectBtn && promiseBtn) {
+    promiseRejectBtn.addEventListener('click', () => {
+      if (promiseBtn.getAttribute('aria-expanded') === 'true') {
+        promiseBtn.click();
+      }
+    });
+  }
 
   if (baapTab && promiseBtn) {
     baapTab.addEventListener('click', () => {
@@ -397,6 +429,41 @@ document.addEventListener('DOMContentLoaded', () => {
     );
     promiseObserver.observe(promiseItem);
   }
+
+  /* ── Exit Intent Popup (back button) ── */
+  const exitOverlay    = document.getElementById('exitPopupOverlay');
+  const exitSecureBtn  = document.getElementById('exitSecureBtn');
+  const exitAlreadyBtn = document.getElementById('exitAlreadyBtn');
+  const exitRejectBtn  = document.getElementById('exitRejectBtn');
+
+  let leavingForReal = false;
+
+  history.pushState(null, null, location.href);
+
+  window.addEventListener('popstate', () => {
+    if (leavingForReal) return;
+    exitOverlay.classList.add('active');
+    history.pushState(null, null, location.href);
+  });
+
+  exitSecureBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    const msg = encodeURIComponent('Hello Property Baap, I want to lock-in my Baap Promise.');
+    window.open('https://wa.me/918800505050?text=' + msg, '_blank');
+    exitOverlay.classList.remove('active');
+  });
+
+  exitAlreadyBtn.addEventListener('click', () => {
+    leavingForReal = true;
+    exitOverlay.classList.remove('active');
+    history.go(-2);
+  });
+
+  exitRejectBtn.addEventListener('click', () => {
+    leavingForReal = true;
+    exitOverlay.classList.remove('active');
+    history.go(-2);
+  });
 
   /* ── Subtle navbar logo pulse on page load ── */
   const logoWrapper = document.querySelector('.logo-wrapper');

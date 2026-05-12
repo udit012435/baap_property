@@ -1673,9 +1673,18 @@ body { top: 0 !important; }
 .about-question--promise {
   position: relative;
   isolation: isolate;
-  background: linear-gradient(105deg, rgba(212,168,47,0.06) 0%, rgba(212,168,47,0.02) 50%, transparent 100%);
+  background: linear-gradient(135deg, #c9a84c 0%, #e8c96a 55%, #d4a82f 100%);
+  color: #000 !important;
   border-left: none;
   animation: promiseGlowPulse 4s ease-in-out infinite;
+}
+
+.about-question--promise span {
+  color: #000;
+}
+
+.about-question--promise .about-icon {
+  color: #000;
 }
 
 /* Rotating gold border via CSS mask */
@@ -1729,12 +1738,12 @@ body { top: 0 !important; }
 }
 
 .about-question--promise:hover {
-  background: linear-gradient(105deg, rgba(212,168,47,0.1) 0%, rgba(212,168,47,0.04) 50%, transparent 100%);
+  background: linear-gradient(135deg, #d4a82f 0%, #f0d878 55%, #c9a84c 100%);
 }
 
 .about-question--promise[aria-expanded="true"] {
-  background: linear-gradient(105deg, rgba(212,168,47,0.1) 0%, rgba(212,168,47,0.04) 50%, transparent 100%);
-  border-bottom: 1px solid rgba(201,168,76,0.18);
+  background: linear-gradient(135deg, #c9a84c 0%, #e8c96a 55%, #d4a82f 100%);
+  border-bottom: 1px solid rgba(201,168,76,0.4);
 }
 
 /* Promise items inside accordion */
@@ -2188,6 +2197,13 @@ body { top: 0 !important; }
   flex-direction: column;
   gap: 0.75rem;
   align-items: center;
+  padding: 0.85rem 0.65rem;
+  background: rgba(10, 8, 2, 0.72);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1.5px solid rgba(212, 168, 47, 0.45);
+  border-radius: 18px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.55), inset 0 0 0 1px rgba(255,220,100,0.06);
 }
 
 .fab {
@@ -2301,15 +2317,9 @@ body { top: 0 !important; }
   position: fixed;
   left: 0;
   top: 50%;
-  transform: translateY(-50%) translateX(-300px);
-  transition: transform 0.42s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(-50%);
   z-index: 1001;
-  display: flex;
-  align-items: center;
-}
-
-.baap-promise-wrapper.open {
-  transform: translateY(-50%) translateX(0);
+  transition: opacity 0.35s ease;
 }
 
 /* Sticky note panel */
@@ -2453,45 +2463,70 @@ body { top: 0 !important; }
 .baap-note-cta i { transition: transform 0.2s ease; }
 .baap-note-cta:hover i { transform: translateX(3px); }
 
-/* Side tab button */
+/* ── Side Tab Button ── */
 .baap-promise-tab {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  width: 50px;
-  height: 175px;
-  background: linear-gradient(180deg, #1c1500 0%, #0d0a02 100%);
-  border: 1px solid rgba(212,168,47,0.38);
+  flex-direction: row;
+  align-items: stretch;
+  width: auto;
+  height: auto;
+  padding: 0;
+  background: none;
+  border: 2px solid gold;
   border-left: none;
-  border-radius: 0 10px 10px 0;
+  border-radius: 0;
+  overflow: hidden;
   cursor: pointer;
-  padding: 0.9rem 0;
-  font-family: 'Rajdhani', sans-serif;
-  color: var(--gold);
-  flex-shrink: 0;
-  box-shadow: 4px 0 18px rgba(0,0,0,0.55);
-  transition: background 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+  box-shadow: 4px 0 20px rgba(0,0,0,0.6);
+  transition: box-shadow 0.25s ease;
 }
 
 .baap-promise-tab:hover {
-  background: linear-gradient(180deg, #2a1f00 0%, #1a1300 100%);
-  border-color: rgba(212,168,47,0.65);
-  box-shadow: 6px 0 24px rgba(0,0,0,0.6), 0 0 10px rgba(212,168,47,0.18);
+  box-shadow: 6px 0 28px rgba(0,0,0,0.7), 0 0 14px rgba(212,168,47,0.35);
 }
 
-.baap-tab-text {
+/* Top box — BAAP: gold bg, black text */
+.baap-tab-gold {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 10px;
+  background: linear-gradient(135deg, rgb(201,168,76) 0%, rgb(232,201,106) 60%, rgb(212,168,47) 100%);
+  color: #000;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
   writing-mode: vertical-rl;
   text-orientation: mixed;
   transform: rotate(180deg);
-  /* font-size: 0.72rem; */
+}
+
+/* Gold divider between BAAP and PROPERTY */
+.baap-tab-divider {
+  display: block;
+  width: 2px;
+  background: linear-gradient(180deg, rgb(201,168,76) 0%, rgb(232,201,106) 60%, rgb(212,168,47) 100%);
+  flex-shrink: 0;
+}
+
+/* Bottom box — PROPERTY: dark bg, gold text */
+.baap-tab-dark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 10px;
+  background: #111;
+  color: gold;
+  font-family: 'Rajdhani', sans-serif;
   font-size: 1rem;
-  font-weight: 600;
-  /* letter-spacing: 0.18em; */
+  font-weight: 700;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--gold);
-  line-height: 1;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
 }
 
 .baap-tab-chevron {
@@ -2505,7 +2540,5 @@ body { top: 0 !important; }
 }
 
 @media (max-width: 480px) {
-  .baap-promise-note { width: 268px; }
-  .baap-promise-wrapper { transform: translateY(-50%) translateX(-268px); }
-  .baap-promise-wrapper.open { transform: translateY(-50%) translateX(0); }
+  .baap-promise-wrapper { transform: translateY(-50%); }
 }

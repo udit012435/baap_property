@@ -584,10 +584,8 @@ body { top: 0 !important; }
   text-decoration: none;
   border-left: 2px solid transparent;
   padding-left: 1rem;
-  background: linear-gradient(135deg, #c9a84c 0%, #e8c96a 60%, #d4a82f 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #888;
+  -webkit-text-fill-color: #888;
   transition: border-left-color var(--transition);
 }
 
@@ -1641,6 +1639,16 @@ body { top: 0 !important; }
 /* BAAP Promise — animated border on item */
 /* ── BAAP Promise — premium animated button border ── */
 
+@property --promise-card-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes promiseCardRotate {
+  to { --promise-card-angle: 360deg; }
+}
+
 @property --promise-angle {
   syntax: '<angle>';
   initial-value: 0deg;
@@ -1668,23 +1676,53 @@ body { top: 0 !important; }
 
 .about-item--promise {
   border-radius: 4px;
+  position: relative;
+  isolation: isolate;
+  border: none;
+}
+
+.about-item--promise::before {
+  content: '';
+  position: absolute;
+  inset: -1.5px;
+  border-radius: 5px;
+  background: conic-gradient(
+    from var(--promise-card-angle),
+    rgba(212,168,47,0.08)   0deg,
+    rgba(212,168,47,0.08)  60deg,
+    #c9a84c                100deg,
+    #f0d878                130deg,
+    #e8c96a                160deg,
+    #c9a84c                190deg,
+    rgba(212,168,47,0.08)  230deg,
+    rgba(212,168,47,0.08)  360deg
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  padding: 1.5px;
+  animation: promiseCardRotate 4s linear infinite;
+  pointer-events: none;
+  z-index: 0;
 }
 
 .about-question--promise {
   position: relative;
   isolation: isolate;
-  background: linear-gradient(135deg, #c9a84c 0%, #e8c96a 55%, #d4a82f 100%);
-  color: #000 !important;
+  background: transparent;
+  color: #d4a82f !important;
   border-left: none;
   animation: promiseGlowPulse 4s ease-in-out infinite;
 }
 
 .about-question--promise span {
-  color: #000;
+  color: #d4a82f;
 }
 
 .about-question--promise .about-icon {
-  color: #000;
+  color: #d4a82f;
 }
 
 /* Rotating gold border via CSS mask */
@@ -1738,11 +1776,11 @@ body { top: 0 !important; }
 }
 
 .about-question--promise:hover {
-  background: linear-gradient(135deg, #d4a82f 0%, #f0d878 55%, #c9a84c 100%);
+  background: rgba(212,168,47,0.06);
 }
 
 .about-question--promise[aria-expanded="true"] {
-  background: linear-gradient(135deg, #c9a84c 0%, #e8c96a 55%, #d4a82f 100%);
+  background: rgba(212,168,47,0.08);
   border-bottom: 1px solid rgba(201,168,76,0.4);
 }
 
@@ -2194,16 +2232,10 @@ body { top: 0 !important; }
 
 .fab-right-group {
   display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  align-items: center;
-  padding: 0.85rem 0.65rem;
-  background: rgba(10, 8, 2, 0.72);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1.5px solid rgba(212, 168, 47, 0.45);
-  border-radius: 18px;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.55), inset 0 0 0 1px rgba(255,220,100,0.06);
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 100%;
 }
 
 .fab {
@@ -2466,7 +2498,7 @@ body { top: 0 !important; }
 /* ── Side Tab Button ── */
 .baap-promise-tab {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: stretch;
   width: auto;
   height: auto;
@@ -2506,8 +2538,8 @@ body { top: 0 !important; }
 /* Gold divider between BAAP and PROPERTY */
 .baap-tab-divider {
   display: block;
-  width: 2px;
-  background: linear-gradient(180deg, rgb(201,168,76) 0%, rgb(232,201,106) 60%, rgb(212,168,47) 100%);
+  height: 2px;
+  background: linear-gradient(90deg, rgb(201,168,76) 0%, rgb(232,201,106) 60%, rgb(212,168,47) 100%);
   flex-shrink: 0;
 }
 
@@ -2539,6 +2571,38 @@ body { top: 0 !important; }
   transform: rotate(180deg);
 }
 
+/* Mobile menu — override baap-promise-tab to horizontal normal button */
+.mobile-menu .baap-promise-tab {
+  flex-direction: row;
+  border: 2px solid gold;
+  border-radius: 6px;
+  margin-top: 0.65rem;
+  width: 100%;
+}
+
+.mobile-menu .baap-tab-gold,
+.mobile-menu .baap-tab-dark {
+  writing-mode: horizontal-tb;
+  transform: rotate(0deg);
+  padding: 0.75rem 1rem;
+  flex: 1;
+  font-size: 0.95rem;
+}
+
+.mobile-menu .baap-tab-divider {
+  width: 2px;
+  height: auto;
+  background: linear-gradient(180deg, rgb(201,168,76) 0%, rgb(232,201,106) 60%, rgb(212,168,47) 100%);
+}
+
+/* Hide sticky tab when mobile menu is open */
+.mobile-menu.open ~ .baap-promise-wrapper {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
 @media (max-width: 480px) {
   .baap-promise-wrapper { transform: translateY(-50%); }
 }
+

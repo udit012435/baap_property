@@ -368,25 +368,34 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* ── BAAP Promise Side Note ── */
-  const baapWrapper = document.getElementById('baapPromiseWrapper');
-  const baapTab     = document.getElementById('baapPromiseTab');
+  /* ── BAAP Promise Tab → scroll to & open accordion ── */
+  const baapTab        = document.getElementById('baapPromiseTab');
+  const baapWrapper    = document.getElementById('baapPromiseWrapper');
+  const promiseBtn     = document.querySelector('.about-question--promise');
+  const promiseItem    = document.querySelector('.about-item--promise');
 
-  if (baapTab && baapWrapper) {
-    baapTab.addEventListener('click', (e) => {
-      e.stopPropagation();
-      baapWrapper.classList.toggle('open');
-    });
-
-    document.addEventListener('click', (e) => {
-      if (baapWrapper.classList.contains('open') && !baapWrapper.contains(e.target)) {
-        baapWrapper.classList.remove('open');
+  if (baapTab && promiseBtn) {
+    baapTab.addEventListener('click', () => {
+      if (promiseBtn.getAttribute('aria-expanded') !== 'true') {
+        promiseBtn.click();
       }
+      const navOffset = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h')) || 96;
+      const top = promiseBtn.getBoundingClientRect().top + window.scrollY - navOffset - 20;
+      window.scrollTo({ top, behavior: 'smooth' });
     });
+  }
 
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') baapWrapper.classList.remove('open');
-    });
+  if (baapWrapper && promiseItem) {
+    const promiseObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          baapWrapper.style.opacity    = entry.isIntersecting ? '0' : '';
+          baapWrapper.style.pointerEvents = entry.isIntersecting ? 'none' : '';
+        });
+      },
+      { threshold: 0.15 }
+    );
+    promiseObserver.observe(promiseItem);
   }
 
   /* ── Subtle navbar logo pulse on page load ── */

@@ -2486,6 +2486,8 @@ body { top: 0 !important; }
 }
 
 .baap-promise-wrapper.tab-visible {
+  flex-direction: column;
+  align-items: stretch;
   transform: translateY(-50%) translateX(0);
 }
 
@@ -2505,18 +2507,31 @@ body { top: 0 !important; }
   cursor: pointer;
   flex-shrink: 0;
   transition: background 0.2s ease;
+  animation: fabPulse 2.8s ease-out infinite;
 }
 
 .baap-tab-toggle:hover {
   background: rgba(212,168,47,0.12);
+  animation: none;
 }
 
 .baap-tab-toggle i {
   transition: transform 0.38s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.baap-promise-wrapper.tab-visible .baap-tab-toggle {
+  order: -1;
+  width: 100%;
+  height: 30px;
+  align-self: auto;
+  border: 2px solid gold;
+  border-bottom: none;
+  border-radius: 0;
+  animation: none;
+}
+
 .baap-promise-wrapper.tab-visible .baap-tab-toggle i {
-  transform: rotate(180deg);
+  transform: rotate(0deg);
 }
 
 /* Sticky note panel */
@@ -2691,7 +2706,7 @@ body { top: 0 !important; }
   background: linear-gradient(135deg, rgb(201,168,76) 0%, rgb(232,201,106) 60%, rgb(212,168,47) 100%);
   color: #000;
   font-family: 'Rajdhani', sans-serif;
-  font-size: 1.15rem;
+  font-size: 1.6rem;
   font-weight: 700;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -2717,7 +2732,7 @@ body { top: 0 !important; }
   background: #111;
   color: gold;
   font-family: 'Rajdhani', sans-serif;
-  font-size: 1.15rem;
+  font-size: 1.6rem;
   font-weight: 700;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -2739,25 +2754,31 @@ body { top: 0 !important; }
 /* Mobile menu — override baap-promise-tab to horizontal normal button */
 .mobile-menu .baap-promise-tab {
   flex-direction: row;
+  background: linear-gradient(135deg, rgb(201,168,76) 0%, rgb(232,201,106) 60%, rgb(212,168,47) 100%);
   border: 2px solid gold;
   border-radius: 6px;
   margin-top: 0.65rem;
   width: 100%;
 }
 
+.mobile-menu .baap-promise-tab {
+  justify-content: center;
+  gap: 0.3rem;
+}
+
 .mobile-menu .baap-tab-gold,
 .mobile-menu .baap-tab-dark {
   writing-mode: horizontal-tb;
   transform: rotate(0deg);
-  padding: 0.75rem 1rem;
-  flex: 1;
+  padding: 0.75rem 0;
+  flex: none;
   font-size: 0.95rem;
+  background: transparent;
+  color: #000;
 }
 
 .mobile-menu .baap-tab-divider {
-  width: 2px;
-  height: auto;
-  background: linear-gradient(180deg, rgb(201,168,76) 0%, rgb(232,201,106) 60%, rgb(212,168,47) 100%);
+  display: none;
 }
 
 /* ===========================
@@ -2820,7 +2841,7 @@ body { top: 0 !important; }
 
 .exit-popup-heading {
   font-family: 'Cinzel', serif;
-  font-size: clamp(1.1rem, 3vw, 1.5rem);
+  font-size: clamp(1.6rem, 5vw, 2.2rem);
   font-weight: 700;
   background: linear-gradient(135deg, #c9a84c, #f0d878, #d4a82f);
   -webkit-background-clip: text;
@@ -2828,13 +2849,15 @@ body { top: 0 !important; }
   background-clip: text;
   line-height: 1.25;
   margin: 0 0 0.75rem;
+  text-align: center;
 }
 
 .exit-popup-sub {
-  font-size: 0.85rem;
+  font-size: 1.1rem;
   color: rgba(255,255,255,0.55);
   line-height: 1.6;
   margin: 0 0 1.25rem;
+  text-align: center;
 }
 
 .exit-popup-benefits {
@@ -2869,7 +2892,7 @@ body { top: 0 !important; }
 .exit-benefit-text strong {
   display: block;
   font-family: 'Rajdhani', sans-serif;
-  font-size: 0.78rem;
+  font-size: 1.08rem;
   font-weight: 800;
   color: #e8c96a;
   letter-spacing: 0.04em;
@@ -2878,7 +2901,7 @@ body { top: 0 !important; }
 }
 
 .exit-benefit-text p {
-  font-size: 0.72rem;
+  font-size: 1rem;
   color: rgba(255,255,255,0.42);
   line-height: 1.5;
   margin: 0;
@@ -2902,7 +2925,7 @@ body { top: 0 !important; }
   background: linear-gradient(135deg, rgb(201,168,76) 0%, rgb(232,201,106) 60%, rgb(212,168,47) 100%);
   color: #000;
   font-family: 'Rajdhani', sans-serif;
-  font-size: 1rem;
+  font-size: 1.25rem;
   font-weight: 800;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -2922,7 +2945,7 @@ body { top: 0 !important; }
   border: 1.5px solid rgba(212,168,47,0.4);
   color: #d4a82f;
   font-family: 'Rajdhani', sans-serif;
-  font-size: 0.82rem;
+  font-size: 1.08rem;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -2938,24 +2961,32 @@ body { top: 0 !important; }
 }
 
 .exit-btn-reject {
-  background: none;
-  border: none;
+  width: 100%;
+  background: transparent;
+  border: 1.5px solid rgba(136,136,136,0.35);
   color: #888;
-  font-size: 0.75rem;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
   cursor: pointer;
   text-align: center;
   line-height: 1.5;
-  padding: 0.25rem 0.5rem;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  transition: color 0.2s ease;
+  padding: 0.6rem 1.5rem;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
 }
 
-.exit-btn-reject:hover { color: #aaa; }
+.exit-btn-reject:hover {
+  color: #aaa;
+  border-color: rgba(136,136,136,0.6);
+  background: rgba(255,255,255,0.04);
+}
 
 @media (max-width: 480px) {
   .exit-popup { padding: 1.5rem 1.1rem 1.2rem; }
-  .exit-popup-heading { font-size: 1.05rem; }
+  .exit-popup-heading { font-size: clamp(1.4rem, 7vw, 1.8rem); }
 }
 
 /* Hide sticky tab when mobile menu is open */
@@ -2967,6 +2998,10 @@ body { top: 0 !important; }
 
 @media (max-width: 480px) {
   .baap-promise-wrapper { transform: translateY(-50%) translateX(calc(-100% + 22px)); }
-  .baap-promise-wrapper.tab-visible { transform: translateY(-50%) translateX(0); }
+  .baap-promise-wrapper.tab-visible {
+    flex-direction: column;
+    align-items: stretch;
+    transform: translateY(-50%) translateX(0);
+  }
 }
 

@@ -373,10 +373,16 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!isOpen) {
         btn.setAttribute('aria-expanded', 'true');
         answer.style.maxHeight = answer.scrollHeight + 'px';
-        // After open animation: remove constraint so content never clips
+        // After open animation: remove constraint and scroll first content into view
         answer.addEventListener('transitionend', () => {
           if (btn.getAttribute('aria-expanded') === 'true') {
             answer.style.maxHeight = 'none';
+            const target = answer.querySelector('h3, p');
+            if (target) {
+              const navOffset = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h')) || 96;
+              const top = target.getBoundingClientRect().top + window.scrollY - navOffset - 16;
+              window.scrollTo({ top, behavior: 'smooth' });
+            }
           }
         }, { once: true });
       }

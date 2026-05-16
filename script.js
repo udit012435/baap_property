@@ -483,14 +483,15 @@ document.addEventListener('DOMContentLoaded', () => {
         leavingForReal = true;
         exitOverlay.classList.remove('active');
         window.location.href = 'https://www.google.com/';
+                // window.close();
+           // fallback if browser blocks window.close() on user-opened tabs
+            // setTimeout(() => { window.location.href = 'https://www.google.com/'; }, 300);
       });
     }
 
     if (exitRejectBtn) {
       exitRejectBtn.addEventListener('click', () => {
-        leavingForReal = true;
         exitOverlay.classList.remove('active');
-        window.location.href = 'about:blank';
       });
     }
   }

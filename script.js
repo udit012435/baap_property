@@ -442,34 +442,58 @@ document.addEventListener('DOMContentLoaded', () => {
   const exitAlreadyBtn = document.getElementById('exitAlreadyBtn');
   const exitRejectBtn  = document.getElementById('exitRejectBtn');
 
-  let leavingForReal = false;
+  if (exitOverlay) {
+    let leavingForReal = false;
 
-  history.pushState(null, null, location.href);
+    const pushExitGuard = () => {
+      history.pushState({ exitGuard: true }, '', location.href);
+    };
 
-  window.addEventListener('popstate', () => {
-    if (leavingForReal) return;
-    exitOverlay.classList.add('active');
-    history.pushState(null, null, location.href);
-  });
+    // Push guard immediately and again after window load (covers bfcache restore)
+    pushExitGuard();
+    window.addEventListener('load', pushExitGuard);
 
-  exitSecureBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    const msg = encodeURIComponent('Hello Property Baap, I want to lock-in my Baap Promise.');
-    window.open('https://wa.me/918800505050?text=' + msg, '_blank');
-    exitOverlay.classList.remove('active');
-  });
+    // pageshow fires when restored from Chrome's back-forward cache
+    window.addEventListener('pageshow', (e) => {
+      if (e.persisted) {
+        leavingForReal = false;
+        pushExitGuard();
+      }
+    });
 
-  exitAlreadyBtn.addEventListener('click', () => {
-    leavingForReal = true;
-    exitOverlay.classList.remove('active');
-    history.go(-2);
-  });
+    window.addEventListener('popstate', (e) => {
+      if (leavingForReal) return;
+      // Only show popup if we just left a guard state (i.e., user pressed back)
+      exitOverlay.classList.add('active');
+      // Re-arm so the next back press also shows popup
+      pushExitGuard();
+    });
 
-  exitRejectBtn.addEventListener('click', () => {
-    leavingForReal = true;
-    exitOverlay.classList.remove('active');
-    history.go(-2);
-  });
+    if (exitSecureBtn) {
+      exitSecureBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const msg = encodeURIComponent('Hello Property Baap, I want to lock-in my Baap Promise.');
+        window.open('https://wa.me/918800505050?text=' + msg, '_blank');
+        exitOverlay.classList.remove('active');
+      });
+    }
+
+    if (exitAlreadyBtn) {
+      exitAlreadyBtn.addEventListener('click', () => {
+        leavingForReal = true;
+        exitOverlay.classList.remove('active');
+        window.location.href = 'https://www.google.com/';
+      });
+    }
+
+    if (exitRejectBtn) {
+      exitRejectBtn.addEventListener('click', () => {
+        leavingForReal = true;
+        exitOverlay.classList.remove('active');
+        window.location.href = 'about:blank';
+      });
+    }
+  }
 
   /* ── Subtle navbar logo pulse on page load ── */
   const logoWrapper = document.querySelector('.logo-wrapper');

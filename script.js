@@ -436,64 +436,134 @@ document.addEventListener('DOMContentLoaded', () => {
     promiseObserver.observe(promiseItem);
   }
 
-  /* ── Exit Intent Popup (back button) ── */
+  // /* ── Exit Intent Popup (back button) ── */
+  // const exitOverlay    = document.getElementById('exitPopupOverlay');
+  // const exitSecureBtn  = document.getElementById('exitSecureBtn');
+  // const exitAlreadyBtn = document.getElementById('exitAlreadyBtn');
+  // const exitRejectBtn  = document.getElementById('exitRejectBtn');
+
+  // if (exitOverlay) {
+  //   let leavingForReal = false;
+
+  //   const pushExitGuard = () => {
+  //     history.pushState({ exitGuard: true }, '', location.href);
+  //   };
+
+  //   // Push guard immediately and again after window load (covers bfcache restore)
+  //   pushExitGuard();
+  //   window.addEventListener('load', pushExitGuard);
+
+  //   // pageshow fires when restored from Chrome's back-forward cache
+  //   window.addEventListener('pageshow', (e) => {
+  //     if (e.persisted) {
+  //       leavingForReal = false;
+  //       pushExitGuard();
+  //     }
+  //   });
+
+  //   window.addEventListener('popstate', (e) => {
+  //     if (leavingForReal) return;
+  //     // Only show popup if we just left a guard state (i.e., user pressed back)
+  //     exitOverlay.classList.add('active');
+  //     // Re-arm so the next back press also shows popup
+  //     pushExitGuard();
+  //   });
+
+  //   if (exitSecureBtn) {
+  //     exitSecureBtn.addEventListener('click', (e) => {
+  //       e.preventDefault();
+  //       const msg = encodeURIComponent('Hello Property Baap, I want to lock-in my Baap Promise.');
+  //       window.open('https://wa.me/918800505050?text=' + msg, '_blank');
+  //       exitOverlay.classList.remove('active');
+  //     });
+  //   }
+
+  //   if (exitAlreadyBtn) {
+  //     exitAlreadyBtn.addEventListener('click', () => {
+  //       leavingForReal = true;
+  //       exitOverlay.classList.remove('active');
+  //       window.location.href = 'https://www.google.com/';
+  //               // window.close();
+  //          // fallback if browser blocks window.close() on user-opened tabs
+  //           // setTimeout(() => { window.location.href = 'https://www.google.com/'; }, 300);
+  //     });
+  //   }
+
+  //   if (exitRejectBtn) {
+  //     exitRejectBtn.addEventListener('click', () => {
+  //       exitOverlay.classList.remove('active');
+  //     });
+  //   }
+  // }
+  /* ── Exit Intent Popup ── */
+
   const exitOverlay    = document.getElementById('exitPopupOverlay');
   const exitSecureBtn  = document.getElementById('exitSecureBtn');
   const exitAlreadyBtn = document.getElementById('exitAlreadyBtn');
   const exitRejectBtn  = document.getElementById('exitRejectBtn');
 
   if (exitOverlay) {
-    let leavingForReal = false;
 
-    const pushExitGuard = () => {
-      history.pushState({ exitGuard: true }, '', location.href);
+    let _scrollY = 0;
+
+    const showExitPopup = () => {
+      _scrollY = window.scrollY;
+      exitOverlay.classList.add('active');
+      // Freeze page scroll under the popup (iOS-safe technique)
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${_scrollY}px`;
+      document.body.style.width = '100%';
+      document.body.style.overflow = 'hidden';
     };
 
-    // Push guard immediately and again after window load (covers bfcache restore)
-    pushExitGuard();
-    window.addEventListener('load', pushExitGuard);
+    const hideExitPopup = () => {
+      exitOverlay.classList.remove('active');
+      // Restore page scroll and position
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
+      document.body.style.overflow = '';
+      window.scrollTo(0, _scrollY);
+    };
 
-    // pageshow fires when restored from Chrome's back-forward cache
-    window.addEventListener('pageshow', (e) => {
-      if (e.persisted) {
-        leavingForReal = false;
-        pushExitGuard();
-      }
+    // Trigger only on browser / mobile back button
+    history.pushState({ exitGuard: true }, '', location.href);
+
+    window.addEventListener('popstate', () => {
+      showExitPopup();
+      history.pushState({ exitGuard: true }, '', location.href);
     });
 
-    window.addEventListener('popstate', (e) => {
-      if (leavingForReal) return;
-      // Only show popup if we just left a guard state (i.e., user pressed back)
-      exitOverlay.classList.add('active');
-      // Re-arm so the next back press also shows popup
-      pushExitGuard();
+    // Close on overlay background click
+    exitOverlay.addEventListener('click', (e) => {
+      if (e.target === exitOverlay) hideExitPopup();
     });
 
+    /* ── WhatsApp Button ── */
     if (exitSecureBtn) {
       exitSecureBtn.addEventListener('click', (e) => {
         e.preventDefault();
         const msg = encodeURIComponent('Hello Property Baap, I want to lock-in my Baap Promise.');
         window.open('https://wa.me/918800505050?text=' + msg, '_blank');
-        exitOverlay.classList.remove('active');
+        hideExitPopup();
       });
     }
 
+    /* ── Already Secured Button ── */
     if (exitAlreadyBtn) {
       exitAlreadyBtn.addEventListener('click', () => {
-        leavingForReal = true;
-        exitOverlay.classList.remove('active');
-        window.location.href = 'https://www.google.com/';
-                // window.close();
-           // fallback if browser blocks window.close() on user-opened tabs
-            // setTimeout(() => { window.location.href = 'https://www.google.com/'; }, 300);
+        window.close();
+        window.location.href = 'https://www.google.com';
       });
     }
 
+    /* ── Reject / Close Button ── */
     if (exitRejectBtn) {
       exitRejectBtn.addEventListener('click', () => {
-        exitOverlay.classList.remove('active');
+        hideExitPopup();
       });
     }
+
   }
 
   /* ── Subtle navbar logo pulse on page load ── */

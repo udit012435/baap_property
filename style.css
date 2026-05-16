@@ -2953,6 +2953,7 @@ body { top: 0 !important; }
 /* ===========================
    EXIT INTENT POPUP
    =========================== */
+/* ── Exit Intent Popup ── */
 .exit-popup-overlay {
   position: fixed;
   inset: 0;
@@ -2960,10 +2961,15 @@ body { top: 0 !important; }
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
   z-index: 9999;
+  /* Overlay is the scroll container — popup grows to natural height */
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 1rem;
+  justify-content: flex-start;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  padding: 1.5rem 1rem;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease;
@@ -2980,12 +2986,11 @@ body { top: 0 !important; }
   border-radius: 10px;
   max-width: 620px;
   width: 100%;
-  max-height: 90vh;
-  overflow-y: auto;
+  /* No max-height / overflow — overlay handles scrolling */
+  flex-shrink: 0;
+  margin: auto;
   padding: 2rem 2rem 1.5rem;
   box-shadow: 0 0 60px rgba(212,168,47,0.12), 0 24px 64px rgba(0,0,0,0.7);
-  scrollbar-width: thin;
-  scrollbar-color: rgba(212,168,47,0.25) transparent;
   transform: translateY(20px);
   transition: transform 0.3s ease;
 }
@@ -3010,7 +3015,7 @@ body { top: 0 !important; }
 
 .exit-popup-heading {
   font-family: 'Cinzel', serif;
-  font-size: clamp(1.6rem, 5vw, 2.2rem);
+  font-size: clamp(1.5rem, 5vw, 2.2rem);
   font-weight: 700;
   background: linear-gradient(135deg, #c9a84c, #f0d878, #d4a82f);
   -webkit-background-clip: text;
@@ -3022,7 +3027,7 @@ body { top: 0 !important; }
 }
 
 .exit-popup-sub {
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: rgba(240, 236, 224, 0.8);
   line-height: 1.6;
   margin: 0 0 1.25rem;
@@ -3061,7 +3066,7 @@ body { top: 0 !important; }
 .exit-benefit-text strong {
   display: block;
   font-family: 'Rajdhani', sans-serif;
-  font-size: 1.08rem;
+  font-size: 1.05rem;
   font-weight: 800;
   color: #e8c96a;
   letter-spacing: 0.04em;
@@ -3070,7 +3075,7 @@ body { top: 0 !important; }
 }
 
 .exit-benefit-text p {
-  font-size: 1rem;
+  font-size: 0.95rem;
   color: rgba(240, 236, 224, 0.8);
   line-height: 1.5;
   margin: 0;
@@ -3094,7 +3099,7 @@ body { top: 0 !important; }
   background: linear-gradient(135deg, rgb(201,168,76) 0%, rgb(232,201,106) 60%, rgb(212,168,47) 100%);
   color: #000;
   font-family: 'Rajdhani', sans-serif;
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   font-weight: 800;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -3114,13 +3119,14 @@ body { top: 0 !important; }
   border: 1.5px solid rgba(212,168,47,0.4);
   color: #d4a82f;
   font-family: 'Rajdhani', sans-serif;
-  font-size: 1.08rem;
+  font-size: 1rem;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   padding: 0.6rem 1.5rem;
   border-radius: 5px;
   cursor: pointer;
+  width: 100%;
   transition: border-color 0.2s ease, background 0.2s ease;
 }
 
@@ -3135,7 +3141,7 @@ body { top: 0 !important; }
   border: 1.5px solid rgba(136,136,136,0.35);
   color: #e8c96a;
   font-family: 'Rajdhani', sans-serif;
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 600;
   letter-spacing: 0.04em;
   cursor: pointer;
@@ -3153,9 +3159,61 @@ body { top: 0 !important; }
   background: rgba(255,255,255,0.04);
 }
 
-@media (max-width: 480px) {
-  .exit-popup { padding: 1.5rem 1.1rem 1.2rem; }
-  .exit-popup-heading { font-size: clamp(1.4rem, 7vw, 1.8rem); }
+@media (max-width: 600px) {
+  .exit-popup-overlay {
+    padding: 0.75rem 0.5rem;
+    align-items: flex-start;
+  }
+  .exit-popup {
+    border-radius: 8px;
+    padding: 1.4rem 1rem 1.1rem;
+    margin: 0 auto;
+  }
+  .exit-popup-heading {
+    font-size: clamp(1.15rem, 6.5vw, 1.5rem);
+  }
+  .exit-popup-sub {
+    font-size: 0.88rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+  }
+  .exit-popup-benefits {
+    gap: 0.65rem;
+    padding-top: 0.9rem;
+    margin-bottom: 1.1rem;
+  }
+  .exit-benefit-item {
+    gap: 0.65rem;
+  }
+  .exit-benefit-icon {
+    width: 26px;
+    height: 26px;
+    font-size: 0.65rem;
+  }
+  .exit-benefit-text strong {
+    font-size: 0.88rem;
+    letter-spacing: 0.02em;
+  }
+  .exit-benefit-text p {
+    font-size: 0.82rem;
+    line-height: 1.45;
+  }
+  .exit-popup-actions {
+    gap: 0.6rem;
+    padding-top: 1rem;
+  }
+  .exit-btn-primary {
+    font-size: 1.05rem;
+    padding: 0.8rem 1rem;
+  }
+  .exit-btn-already {
+    font-size: 0.88rem;
+    padding: 0.55rem 1rem;
+  }
+  .exit-btn-reject {
+    font-size: 0.8rem;
+    padding: 0.5rem 0.75rem;
+  }
 }
 
 /* Hide sticky tab when mobile menu is open */

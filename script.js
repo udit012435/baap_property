@@ -276,6 +276,25 @@ document.addEventListener('DOMContentLoaded', () => {
     },
   });
 
+  /* ── Hero Video Autoplay ── */
+  const heroVideo = document.querySelector('.hero-video');
+  if (heroVideo) {
+    heroVideo.muted = true;
+    const playAttempt = heroVideo.play();
+    if (playAttempt !== undefined) {
+      playAttempt.catch(() => {
+        // Autoplay blocked by browser — hide video so image slider shows through
+        heroVideo.style.display = 'none';
+        const resumeVideo = () => {
+          heroVideo.style.display = '';
+          heroVideo.play();
+        };
+        document.addEventListener('click', resumeVideo, { once: true });
+        document.addEventListener('touchstart', resumeVideo, { once: true });
+      });
+    }
+  }
+
   /* ── Hero Image Slider ── */
   const heroSlides = document.querySelectorAll('.hero-slide');
   let currentSlide = 0;

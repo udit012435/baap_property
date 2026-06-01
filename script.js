@@ -70,13 +70,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* ── Hero Title: no animation ── */
+  /* ── Hero Tagline Carousel ── */
   (function () {
-    const title = document.querySelector('.hero-title');
-    if (!title) return;
-    title.style.opacity = '1';
-    title.style.transform = 'none';
-    title.style.animation = 'none';
+    const items = document.querySelectorAll('.htc-item');
+    if (!items.length) return;
+    let current = 0;
+    setInterval(function () {
+      items[current].classList.remove('active');
+      current = (current + 1) % items.length;
+      items[current].classList.add('active');
+    }, 3000);
   })();
 
   /* ── Navbar Tagline: typing animation ── */

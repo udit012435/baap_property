@@ -1645,6 +1645,7 @@ body { top: 0 !important; }
   align-items: center;
   gap: 0.75rem;
   padding: 0rem 1.4rem;
+  
   /* background: var(--gold); */
   background: linear-gradient(135deg, #c9a84c 0%, #e8c96a 60%, #d4a82f 100%);
   border: 2px solid var(--gold);
@@ -1665,6 +1666,36 @@ body { top: 0 !important; }
   border-color: var(--gold-light);
   box-shadow: 0 0 55px rgba(201,168,76,0.5);
   transform: translateY(-2px);
+}
+
+.cta-btn-secondary {
+  background: linear-gradient(135deg, #c9a84c 0%, #e8c96a 60%, #d4a82f 100%);
+  border-color: var(--gold);
+  color: #0a0600;
+  padding: 0.75rem 2.2rem;
+}
+
+.cta-btn-secondary:hover {
+  background: linear-gradient(135deg, #e8c96a 0%, #fff0a0 60%, #e8c96a 100%);
+  border-color: var(--gold-light);
+  color: #0a0600;
+  box-shadow: 0 0 55px rgba(201,168,76,0.5);
+  transform: translateY(-2px);
+}
+
+.cta-btn-zero-brokerage {
+  margin-bottom: 16vh;
+}
+
+/* — 1 Call Challenge divider button — */
+.section-divider-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: 13px;
+  z-index: 10;
+  margin: -36px 0;
 }
 
 .cta-btn-icon {
@@ -2632,6 +2663,21 @@ body { top: 0 !important; }
   .cta-btn {
     width: 100%;
     justify-content: flex-start;
+  }
+
+  .section-divider-btn {
+    padding: 0 1.5rem;
+    position: relative;
+    top: -30px;
+  }
+
+  .section-divider-btn .cta-btn-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .cta-btn-zero-brokerage {
+    margin-bottom: 9vh;
   }
 
   .footer-brand-property {

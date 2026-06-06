@@ -331,38 +331,24 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ── Careers Form ── */
   const careersForm = document.getElementById('careersForm');
   if (careersForm) {
-    careersForm.addEventListener('submit', async (e) => {
+    careersForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      const btn = careersForm.querySelector('.careers-submit');
-      const original = btn.textContent;
-      btn.textContent = 'SENDING…';
-      btn.disabled = true;
+      const data = new FormData(careersForm);
+      const name  = data.get('name')  || '';
+      const phone = data.get('phone') || '';
+      const email = data.get('email') || '';
+      const field = data.get('field') || '';
 
-      try {
-        const res = await fetch('mailer.php', {
-          method: 'POST',
-          body: new FormData(careersForm),
-        });
-        const data = await res.json();
-        if (data.success) {
-          careersForm.reset();
-          btn.textContent = 'SUBMITTED ✓';
-          btn.style.background = 'linear-gradient(135deg,#3a7d44,#52b069)';
-          setTimeout(() => {
-            btn.textContent = original;
-            btn.style.background = '';
-            btn.disabled = false;
-          }, 4000);
-        } else {
-          alert(data.message || 'Something went wrong. Please try again.');
-          btn.textContent = original;
-          btn.disabled = false;
-        }
-      } catch {
-        alert('Network error. Please try again.');
-        btn.textContent = original;
-        btn.disabled = false;
-      }
+      const msg =
+        `*New Career Enquiry – Property Baap*\n\n` +
+        `*Name:* ${name}\n` +
+        `*Phone:* ${phone}\n` +
+        `*Email:* ${email}\n` +
+        `*Field / Expertise:* ${field}`;
+
+      const url = `https://wa.me/918800505050?text=${encodeURIComponent(msg)}`;
+      window.open(url, '_blank');
+      careersForm.reset();
     });
   }
 

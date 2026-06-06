@@ -82,6 +82,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 3000);
   })();
 
+  /* ── Hero Sub Carousel ── */
+  (function () {
+    const items = document.querySelectorAll('.hero-sub-item');
+    if (!items.length) return;
+    let current = 0;
+    setInterval(function () {
+      items[current].classList.remove('active');
+      current = (current + 1) % items.length;
+      items[current].classList.add('active');
+    }, 2000);
+  })();
+
   /* ── Navbar Tagline: typing animation ── */
   (function () {
     const tagline = document.querySelector('.navbar-tagline-bar');

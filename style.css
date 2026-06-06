@@ -666,7 +666,7 @@ body { top: 0 !important; }
    =========================== */
 .hero {
   position: relative;
-  height: 100vh;
+  height: 113vh;
   min-height: 620px;
   padding-top: var(--nav-h);
   display: flex;
@@ -885,7 +885,7 @@ body { top: 0 !important; }
 
 @media (max-width: 768px) {
   .hero-services {
-    margin-bottom: 1rem;
+    margin-bottom: 4rem;
     width: 100%;
     max-width: 300px;
     margin-left: auto;
@@ -979,14 +979,48 @@ body { top: 0 !important; }
   background: rgba(0, 0, 0, 0.55);
   border: 1px solid rgba(201, 168, 76, 0.45);
   border-radius: 6px;
-  padding: 0.45rem 1.1rem;
-  display: block;
+  position: relative;
+  overflow: hidden;
+  height: 4.5rem;
   width: fit-content;
+  min-width: 36rem;
   margin-left: auto;
   margin-right: auto;
   opacity: 0;
   transform: translateY(20px);
   animation: fadeUp 0.8s 0.75s forwards;
+}
+
+.hero-sub-item {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1.1rem;
+  margin: 0;
+  opacity: 0;
+  transform: translateX(60px);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+  pointer-events: none;
+}
+
+.hero-sub-item.active {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: auto;
+}
+
+@media (max-width: 768px) {
+  .hero-sub {
+    min-width: unset;
+    width: calc(100% - 2rem);
+    height: 5rem;
+  }
+  .hero-sub-item {
+    text-align: center;
+    white-space: normal;
+  }
 }
 
 .hero-tagline-hindi {
@@ -1855,6 +1889,38 @@ body { top: 0 !important; }
   border-top: 1px solid rgba(201,168,76,0.18);
 }
 
+/* FAQ Items */
+.faq-item {
+  padding-bottom: 1.4rem;
+  border-bottom: 1px solid rgba(201,168,76,0.12);
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.faq-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.faq-question {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--gold);
+  margin: 0;
+}
+
+.faq-answer-label {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  font-style: italic;
+  color: var(--gold-light);
+  margin: 0;
+  opacity: 0.85;
+}
+
 /* BAAP Promise — animated border on item */
 /* ── BAAP Promise — premium animated button border ── */
 
@@ -2227,20 +2293,30 @@ body { top: 0 !important; }
   padding: 2.8rem 1.5rem;
 }
 
+/* — Centered logo above the grid — */
+.footer-brand-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 0 2rem 0;
+  border-bottom: 1px solid #333333;
+  margin-bottom: 2rem;
+}
+
 .footer-grid {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(7, 1fr);
   align-items: stretch;
 }
 
 .footer-col {
-  padding: 0 1.6rem;
+  padding: 0 1.2rem;
   border-right: 1px solid #333333;
   display: flex;
   flex-direction: column;
 }
 
-.footer-col:first-child { padding: 5px 0; }
+
 .footer-col:last-child  { border-right: none; padding-right: 0; }
 
 /* — Col 1 brand layout — */
@@ -2432,6 +2508,12 @@ body { top: 0 !important; }
 }
 
 /* — Footer responsive — */
+@media (max-width: 1280px) {
+  .footer-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
 @media (max-width: 1024px) {
   .footer-grid {
     grid-template-columns: repeat(3, 1fr);
@@ -2442,7 +2524,7 @@ body { top: 0 !important; }
     border-bottom: 1px solid #333333;
   }
   .footer-col:last-child { border-bottom: none; }
-  .footer-col-brand { flex-direction: column; align-items: center; text-align: center; }
+  .footer-brand-center { padding: 0 0 1.5rem 0; margin-bottom: 1.5rem; }
 }
 
 @media (max-width: 480px) {

@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
       items[current].classList.remove('active');
       current = (current + 1) % items.length;
       items[current].classList.add('active');
-    }, 2000);
+    }, 4000);
   })();
 
   /* ── Navbar Tagline: typing animation ── */
@@ -405,6 +405,22 @@ document.addEventListener('DOMContentLoaded', () => {
             }
           }
         }, { once: true });
+      }
+    });
+  });
+
+  /* ── Our Experties Sub-Accordion ── */
+  document.querySelectorAll('.expertise-toggle').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const content = btn.nextElementSibling;
+      const isOpen = btn.getAttribute('aria-expanded') === 'true';
+
+      if (isOpen) {
+        btn.setAttribute('aria-expanded', 'false');
+        content.style.maxHeight = null;
+      } else {
+        btn.setAttribute('aria-expanded', 'true');
+        content.style.maxHeight = content.scrollHeight + 'px';
       }
     });
   });
